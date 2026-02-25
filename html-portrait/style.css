@@ -5,6 +5,13 @@
 
 }
 
+.geist-<uniquifier> {
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
 html, body{
   margin: 0;
   padding: 0;
@@ -14,18 +21,23 @@ html, body{
 
 body {
   background: var(--bg);
-  font-family: 'Arial', sans-serif;
+  font-family: "Geist", sans-serif;
   color: var(--text);
   text-align: center;
 
 }
 
+.profilePic{
+  position: sticky;
+  top: 20px;
+
+}
 
 .bio{
   padding: 20px;
   text-align: justify;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 900;
   font-size: clamp(80px, 2vw, 100px);
   line-height: 1.2;
   margin:auto
@@ -40,6 +52,13 @@ margin: 0 auto;
 
 }
 
+.bio:hover {
+	cursor: url('assets/heart.webp'), auto;
+
+}
+
+
+
 img {
   display:block;
   margin: auto;
@@ -52,8 +71,23 @@ img {
   /*      border: 3px solid blue; */
 }
 
+a {
+	color: var(--text);
+}
+
+a:hover {
+	color: #c1c1c7;
+ text-decoration: none;
+ 
+}
+
+
+
+
 img:hover {
-  transform: scale(1.2);
+  transform: scale(1.01);
+  filter: blur(10px);
+    z-index: 2;
 }
 
 
