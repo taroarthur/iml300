@@ -1,6 +1,6 @@
 :root{
   --bg: #FF3600;
-  --text: #19191a:
+  --text: #19191a;
 
 
 }
@@ -16,14 +16,17 @@ body {
   background: var(--bg);
   font-family: 'Arial', sans-serif;
   color: var(--text);
+  text-align: center;
 
 }
 
 
 .bio{
+  padding: 20px;
+  text-align: justify;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: clamp(100px, 2vw, 36px);
+  font-size: clamp(80px, 2vw, 100px);
   line-height: 1.2;
   margin:auto
 
@@ -38,16 +41,19 @@ margin: 0 auto;
 }
 
 img {
-  height: 150px;
+  display:block;
+  margin: auto;
+  height: 50vw;
   border-radius: 20px;
   padding: 10px;
   transition: 1s;
+  
 
   /*      border: 3px solid blue; */
 }
 
 img:hover {
-  height: 20vw;
+  transform: scale(1.2);
 }
 
 
