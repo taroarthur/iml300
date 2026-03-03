@@ -85,6 +85,13 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+	color: #2B4F71;
+ text-decoration: none;
+
+ 
+}
+
 button {
     cursor: pointer;
     border: none;
@@ -116,8 +123,6 @@ button {
 }
 
 .intro-text{
-
-
     color: #C4C4C4;
     display: inline-block;
     width: 100%;
@@ -134,9 +139,70 @@ button {
     typewriter 4s steps(24) 1 forwards,
     blink 0.5s step-end infinite;
 
-
-
 }
+
+.page-3{
+    background: #0E0E0E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    justify-content: center;
+    gap: 80px;
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
+.timer
+.question,
+.options {position: relative; }
+
+.timer{
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Share Tech Mono";
+    font-size: 20px;
+    color: #C4C4C4;
+}
+
+.question{
+    font-family: "Share Tech Mono";
+    font-size: 20px;
+    color: #C4C4C4;
+    text-align: center;
+}
+
+.options{
+    width: min(1200px, 95 ch);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95px;
+    background: #2B4F71;
+    color: #C4C4C4;
+    font-family: "Share Tech Mono";
+    font-size: 18px;
+    text-align: center;
+    border-radius: 3px;
+    
+}
+
+.option:hover{
+    transform: scale(1.01);
+}
+
+
 
 
 
@@ -148,7 +214,7 @@ button {
 
 @keyframes typewriter {
     from {width: 0; height: 100%;}
-    to {width: 100ch;}
+    to {width: 95ch}
 
 
 
