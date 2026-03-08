@@ -137,15 +137,15 @@ button {
     overflow: hidden;
     white-space: nowrap;
     font-family: "Share Tech Mono";
-    font-size: 20px;
+    font-size: 1em;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-transform: uppercase;
 
     animation:
-    typewriter 4s steps(24) 1 forwards,
-    blink 0.5s step-end infinite;
+    typewriter 4s steps(48) 1s 1 normal both,
+    blinkTextCursor 500ms steps(48) infinite normal;
 
 }
 
@@ -227,9 +227,17 @@ button {
 
 
 @keyframes typewriter {
-    from {width: 0; height: 100%;}
-    to {width: 95ch}
+    from {height: 0em}
+    to {height: 50ch}
 
+
+
+}
+
+@keyframes blinkTextCursor{
+    from{border-right-color;
+    rgba(196, 196, 196, 0.8);}
+    to{border-right-color: transparent;}
 
 
 }
