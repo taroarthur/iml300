@@ -1,5 +1,6 @@
 const TIMER_DURATION_MS = 5 * 60 * 1000;
 const TIMER_START_KEY = "timerStart";
+const WARNING_THRESHOLD_MS = 60 * 1000;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -28,14 +29,18 @@ function draw() {
   const totalSeconds = Math.ceil(remaining / 1000);
   const mins = Math.floor(totalSeconds / 60);
   const secs = totalSeconds % 60;
+  const isWarningState = remaining <= WARNING_THRESHOLD_MS;
 
   const timeString = `${mins}:${String(secs).padStart(2, "0")}`;
 
-  fill(196);
+  fill(isWarningState ? "#ff4d4d" : 196);
   text(timeString, width / 2, 100);
 
   const timerElement = document.getElementById("timer");
-  if (timerElement) timerElement.textContent = timeString;
+  if (timerElement) {
+    timerElement.textContent = timeString;
+    timerElement.style.color = isWarningState ? "#ff4d4d" : "#C4C4C4";
+  }
 }
 
 function windowResized() {
