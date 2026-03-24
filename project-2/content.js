@@ -85,14 +85,9 @@ function renderQuestion(questionData, previousWasCorrect, totalQuestions, curren
     optionsContainer.dataset.questionType = questionData.type;
   }
 
-  const totalOptions = getTotalOptionsForQuestion(questionData);
-  const numCorrectToShow = Math.min(
-    getCorrectCountForThisQuestion(questionData, previousWasCorrect),
-    questionData.correctAnswers.length
-  );
-  const numIncorrectToShow = Math.min(
-    totalOptions - numCorrectToShow,
-    questionData.incorrectAnswers.length
+  const { numCorrectToShow, numIncorrectToShow } = getOptionCountsForQuestion(
+    questionData,
+    previousWasCorrect
   );
 
   const selectedCorrect = sample(questionData.correctAnswers, numCorrectToShow)
@@ -134,6 +129,27 @@ function getTotalOptionsForQuestion(questionData) {
   }
 
   return DEFAULT_TOTAL_OPTIONS;
+}
+
+function getOptionCountsForQuestion(questionData, previousWasCorrect) {
+  if (questionData.type === "image-select") {
+    return {
+      numCorrectToShow: questionData.correctAnswers.length,
+      numIncorrectToShow: questionData.incorrectAnswers.length
+    };
+  }
+
+  const totalOptions = getTotalOptionsForQuestion(questionData);
+  const numCorrectToShow = Math.min(
+    getCorrectCountForThisQuestion(questionData, previousWasCorrect),
+    questionData.correctAnswers.length
+  );
+  const numIncorrectToShow = Math.min(
+    totalOptions - numCorrectToShow,
+    questionData.incorrectAnswers.length
+  );
+
+  return { numCorrectToShow, numIncorrectToShow };
 }
 
 function renderOptionContent(optionEl, value, questionType) {
