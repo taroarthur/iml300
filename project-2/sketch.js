@@ -1,5 +1,5 @@
-let duration = 5 * 60 * 1000;
-let END_KEY = "end_key";
+const TIMER_DURATION_MS = 5 * 60 * 1000;
+const TIMER_START_KEY = "timerStart";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -7,45 +7,34 @@ function setup() {
   textSize(32);
   textFont("Share Tech Mono");
 
-  let isStartPage = document.body.classList.contains("start-timer");
-
-  let endTime = Number(localStorage.getItem(END_KEY));
-
-
-  if (isStartPage) {
-    endTime = Date.now() + duration;
-    localStorage.setItem(END_KEY, String(endTime));
-    return;
-  }
-
-
-  if (!Number.isFinite(endTime)) {
-    endTime = Date.now() + duration;
-    localStorage.setItem(END_KEY, String(endTime));
+  if (!sessionStorage.getItem(TIMER_START_KEY)) {
+    sessionStorage.setItem(TIMER_START_KEY, String(Date.now()));
   }
 }
 
 function draw() {
   background(43, 79, 113);
 
-  let endTime = Number(localStorage.getItem(END_KEY));
-  let remaining = endTime - Date.now();
+  const timerStart = Number(sessionStorage.getItem(TIMER_START_KEY));
+  const elapsed = Date.now() - timerStart;
+  const remaining = TIMER_DURATION_MS - elapsed;
 
-  if (!Number.isFinite(endTime) || remaining <= 0) {
+  if (!Number.isFinite(timerStart) || remaining <= 0) {
+    sessionStorage.removeItem(TIMER_START_KEY);
     window.location.href = "time-up.html";
     return;
   }
 
-  let totalSeconds = Math.ceil(remaining / 1000);
-  let mins = Math.floor(totalSeconds / 60);
-  let secs = totalSeconds % 60;
+  const totalSeconds = Math.ceil(remaining / 1000);
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
 
-  let timeString = `${mins}:${String(secs).padStart(2, "0")}`;
+  const timeString = `${mins}:${String(secs).padStart(2, "0")}`;
 
   fill(196);
   text(timeString, width / 2, 100);
 
-  let timerElement = document.getElementById("timer");
+  const timerElement = document.getElementById("timer");
   if (timerElement) timerElement.textContent = timeString;
 }
 

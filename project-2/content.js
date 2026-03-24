@@ -2,7 +2,8 @@ const TOTAL_OPTIONS = 4;
 
 const STORAGE_KEYS = {
   correctCount: "correctCount",
-  previousWasCorrect: "previousWasCorrect"
+  previousWasCorrect: "previousWasCorrect",
+  timerStart: "timerStart"
 };
 
 document.addEventListener("DOMContentLoaded", initGame);
@@ -144,11 +145,11 @@ function finishGame(correctCount, totalQuestions) {
 
   if (correctCount === totalQuestions) {
     localStorage.removeItem(STORAGE_KEYS.correctCount);
-    localStorage.removeItem("end_key");
+    sessionStorage.removeItem(STORAGE_KEYS.timerStart);
     window.location.href = "success.html";
   } else {
     localStorage.removeItem(STORAGE_KEYS.correctCount);
-    localStorage.removeItem("end_key");
+    sessionStorage.removeItem(STORAGE_KEYS.timerStart);
     window.location.href = "failure.html";
   }
 }
