@@ -1,4 +1,4 @@
-const TOTAL_OPTIONS = 4;
+const DEFAULT_TOTAL_OPTIONS = 4;
 
 const STORAGE_KEYS = {
   correctCount: "correctCount",
@@ -75,33 +75,80 @@ function getCurrentQuestionIndex() {
 
 function renderQuestion(questionData, previousWasCorrect, totalQuestions, currentQuestionIndex) {
   const questionEl = document.getElementById("question");
-  const optionEls = document.querySelectorAll(".option");
+  const optionEls = [...document.querySelectorAll(".option")];
+  const optionsContainer = document.getElementById("options");
 
   questionEl.textContent = questionData.question;
+  questionEl.classList.toggle("typewriter", questionData.type === "text");
 
-  const numCorrectToShow = getCorrectCountForThisQuestion(questionData, previousWasCorrect);
-  const numIncorrectToShow = TOTAL_OPTIONS - numCorrectToShow;
+  if (optionsContainer) {
+    optionsContainer.dataset.questionType = questionData.type;
+  }
+
+  const totalOptions = getTotalOptionsForQuestion(questionData);
+  const numCorrectToShow = Math.min(
+    getCorrectCountForThisQuestion(questionData, previousWasCorrect),
+    questionData.correctAnswers.length
+  );
+  const numIncorrectToShow = Math.min(
+    totalOptions - numCorrectToShow,
+    questionData.incorrectAnswers.length
+  );
 
   const selectedCorrect = sample(questionData.correctAnswers, numCorrectToShow)
-    .map(text => ({ text, isCorrect: true }));
+    .map(value => ({ value, isCorrect: true }));
 
   const selectedIncorrect = sample(questionData.incorrectAnswers, numIncorrectToShow)
-    .map(text => ({ text, isCorrect: false }));
+    .map(value => ({ value, isCorrect: false }));
 
   const finalOptions = shuffle([...selectedCorrect, ...selectedIncorrect]);
 
   optionEls.forEach((el, index) => {
     const option = finalOptions[index];
 
-    el.textContent = option.text;
+    if (!option) {
+      el.hidden = true;
+      el.onclick = null;
+      el.removeAttribute("data-correct");
+      el.removeAttribute("href");
+      el.replaceChildren();
+      return;
+    }
+
+    el.hidden = false;
+    el.classList.toggle("image-option", questionData.type === "image-select");
     el.dataset.correct = option.isCorrect ? "true" : "false";
     el.href = "#";
+    renderOptionContent(el, option.value, questionData.type);
 
     el.onclick = (e) => {
       e.preventDefault();
       handleAnswer(option.isCorrect, totalQuestions, currentQuestionIndex);
     };
   });
+}
+
+function getTotalOptionsForQuestion(questionData) {
+  if (questionData.type === "image-select") {
+    return questionData.correctAnswers.length + questionData.incorrectAnswers.length;
+  }
+
+  return DEFAULT_TOTAL_OPTIONS;
+}
+
+function renderOptionContent(optionEl, value, questionType) {
+  optionEl.replaceChildren();
+
+  if (questionType === "image-select") {
+    const image = document.createElement("img");
+    image.src = value;
+    image.alt = "Question option image";
+    image.className = "option-image";
+    optionEl.appendChild(image);
+    return;
+  }
+
+  optionEl.textContent = value;
 }
 
 function getCorrectCountForThisQuestion(questionData, previousWasCorrect) {

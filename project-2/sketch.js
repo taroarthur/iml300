@@ -33,7 +33,7 @@ function draw() {
 
   const timeString = `${mins}:${String(secs).padStart(2, "0")}`;
 
-  fill(isWarningState ? "#ff4d4d" : 196);
+  fill(isWarningState ? "#eb4034" : 196);
   text(timeString, width / 2, 100);
 
   const timerElement = document.getElementById("timer");

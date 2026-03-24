@@ -29,7 +29,8 @@ body {
 
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     
 }
@@ -209,6 +210,10 @@ a:hover {
 .options{
    /* width: min(1100px, calc(100vw - 120px)); */
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
 
     font-family: "Share Tech Mono";
     font-size: 30px;
@@ -220,7 +225,8 @@ a:hover {
 
 .option{
     width: 100%;
-    height: 95px;
+    min-height: 95px;
+    display: block;
 
     /* justify-content: center; */
     color: #C4C4C4;
@@ -240,6 +246,29 @@ a:hover {
 .option:hover{
     color: #C4C4C4;
     filter: blur(0);
+    opacity: 1;
+}
+
+.option-image{
+    display: block;
+    width: min(420px, 100%);
+    height: auto;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.options[data-question-type="image-select"]{
+    width: min(520px, 100%);
+    gap: 32px;
+}
+
+.options[data-question-type="image-select"] .option{
+    min-height: 0;
+    height: auto;
+    filter: none;
+}
+
+.options[data-question-type="image-select"] .option:hover{
     opacity: 1;
 }
 

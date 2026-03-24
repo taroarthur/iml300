@@ -185,12 +185,10 @@
       "type": "image-select",
       "question": "What do you see outside your window?",
       "correctAnswers": [
-        "img-3",
-        "img-4"
+        "wheatfield2.png"
       ],
       "incorrectAnswers": [
-        "img-1",
-        "img-2"
+        "wheatfield1.jpg"
       ],
       "populationLogic": {
         "mode": "conditional",
