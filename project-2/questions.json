@@ -1,0 +1,220 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "type": "text",
+      "question": "What is your favourite food?",
+      "correctAnswers": [
+        "Something simple done really well—good bread, ripe tomatoes, olive oil—the sort of food that doesn’t need to prove anything.",
+        "Whatever tastes like home in that moment; sometimes it’s comfort food, sometimes it’s something completely new.",
+        "I tend to love food that feels unpretentious but thoughtful, the kind you remember long after the meal is over.",
+        "Probably something warm and familiar that reminds me of good company and an unhurried evening.",
+        "It changes often, but I always gravitate toward food that feels honest and carefully made."
+      ],
+      "incorrectAnswers": [
+        "There’s this pasta dish that my mother makes. Nothing compares to a home cooked meal.",
+        "I can’t decide, but probably something my grandma cooks.",
+        "Something innovative and daring that blends bold flavours with cross-cultural ingredients.",
+        "The appetiser bread at my favourite childhood French restaurant."
+      ],
+      "populationLogic": {
+        "mode": "fixed",
+        "correctOptionsToShow": 3
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "question": "When was the last time you felt alive?",
+      "correctAnswers": [
+        "A few weeks ago I was walking home late at night after finishing something difficult—it was quiet and I realised how good it felt to finally be done.",
+        "The last time I stayed up too late working on a project and suddenly noticed it was 3 a.m. and I hadn’t checked the time once.",
+        "Recently, standing somewhere high up with a view of the city just as the lights were coming on.",
+        "The moment right after trying something I wasn’t sure I could pull off and realising it actually worked.",
+        "Not long ago during a long walk where the weather was perfect and everything felt strangely clear."
+      ],
+      "incorrectAnswers": [
+        "My friends and I decided that 4am was too late to go to sleep, so we stayed up and watched the sunset on the beach. It was beautiful.",
+        "I was jamming with my best friends on a random Saturday afternoon. Probably that.",
+        "Watching my home city’s football team score the winning point and celebrating with everyone in the stadium."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 1,
+        "ifPreviousCorrect": 2
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "question": "What are you most looking forward to?",
+      "correctAnswers": [
+        "Finishing a long stretch of work and finally having a quiet week where I can slow down a bit.",
+        "Seeing where the projects I’m currently building actually end up a few years from now.",
+        "Travelling somewhere new again and getting that first-day feeling of not quite knowing the place yet.",
+        "The moment when something I’ve been working on privately is finally ready to show people.",
+        "The next phase where a lot of small efforts start turning into something tangible."
+      ],
+      "incorrectAnswers": [
+        "The prospect of continuing to live in the city long enough to call it home.",
+        "A mid-summer trip to Spain with my friends.",
+        "Falling in love and being loved."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 1,
+        "ifPreviousCorrect": 3
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "question": "Who inspires you?",
+      "correctAnswers": [
+        "A professor I had who treated every question seriously and somehow made difficult ideas feel exciting.",
+        "Friends who quietly build interesting things without making a spectacle of it.",
+        "A filmmaker I once heard speak who talked more about patience than talent.",
+        "People who keep working at something for years even when no one is paying attention yet.",
+        "Anyone who manages to stay curious about the world long after school or training ends."
+      ],
+      "incorrectAnswers": [
+        "My eighty-something-year-old professor who somehow has more energy than I do and approaches the subject with such nuance and care.",
+        "My parents who worked tirelessly to support their children.",
+        "People who work diligently and share their passions with the world."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 1,
+        "ifPreviousCorrect": 1
+      }
+    },
+    {
+      "id": 5,
+      "type": "text",
+      "question": "Where do you feel most comfortable?",
+      "correctAnswers": [
+        "At a desk late at night when everything is quiet and I can finally focus.",
+        "In small cafés where people are talking softly and no one is rushing you out the door.",
+        "Walking through a familiar part of the city where I know exactly where everything is.",
+        "In rooms where people are discussing ideas rather than trying to impress each other.",
+        "Anywhere that feels calm enough to think but alive enough to feel interesting."
+      ],
+      "incorrectAnswers": [
+        "Curled up at my desk in sweatpants doing something creative after a long day.",
+        "On a cozy couch reading a book on a rainy day.",
+        "On a rooftop at night chatting and laughing with my friends.",
+        "Basking in the sun on a lazy Sunday morning."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 1,
+        "ifPreviousCorrect": 4
+      }
+    },
+    {
+      "id": 6,
+      "type": "text",
+      "question": "How do your friends perceive you?",
+      "correctAnswers": [
+        "Probably as the person who overthinks things but is usually the one organising plans.",
+        "Someone who listens a lot and then eventually offers a very specific opinion.",
+        "A bit intense about projects but fairly relaxed about everything else.",
+        "The friend who asks too many questions but means well.",
+        "Someone dependable who also disappears occasionally when working on something."
+      ],
+      "incorrectAnswers": [
+        "Hopefully as a compassionate person who strives to be honest.",
+        "A hot-headed but ultimately caring person.",
+        "A good listener who sometimes talks too much.",
+        "A seemingly cold but dedicated and kind person."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 0,
+        "ifPreviousCorrect": 2
+      }
+    },
+    {
+      "id": 7,
+      "type": "text",
+      "question": "Are you lonely?",
+      "correctAnswers": [
+        "Not really, though there are moments—like walking home late—when you wish someone else had been there for the conversation.",
+        "Occasionally, especially during busy periods when everyone’s schedules stop lining up.",
+        "Sometimes, but it usually fades once I spend an evening with friends or get back into something meaningful.",
+        "In small, passing ways rather than anything heavy or constant.",
+        "Not often—solitude and loneliness feel different once you get used to working on your own."
+      ],
+      "incorrectAnswers": [
+        "Sometimes I feel very lonely, other times I feel like I belong—it really depends on the situation, I don’t know.",
+        "Yes, especially now that I’m in a new place with new people.",
+        "Yes—but I quite like my own company, it’s calming.",
+        "No. I feel loved and cared for. I’m not lonely at all."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 0,
+        "ifPreviousCorrect": 2
+      }
+    },
+    {
+      "id": 8,
+      "type": "text",
+      "question": "Where do you see yourself in five years?",
+      "correctAnswers": [
+        "Hopefully somewhere that reflects a lot of hard work I’m putting in now.",
+        "Running or building something that started as a small idea on a laptop.",
+        "In a place where the projects I care about have matured into something real.",
+        "Still learning, but with a clearer sense of direction than I have today.",
+        "Ideally in a role where I can look back at the last few years and feel they were spent building something worthwhile."
+      ],
+      "incorrectAnswers": [
+        "Doing better than I am now and at a place where I can look back and laugh at all the things I was worried about.",
+        "Working abroad in a new country, exploring new places and meeting new people.",
+        "Making things no matter what, but hopefully bigger and better than anything right now.",
+        "I’m not sure... But I’m excited to explore what the future holds."
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 0,
+        "ifPreviousCorrect": 3
+      }
+    },
+    {
+      "id": 9,
+      "type": "image-select",
+      "question": "What do you see outside your window?",
+      "correctAnswers": [
+        "img-3",
+        "img-4"
+      ],
+      "incorrectAnswers": [
+        "img-1",
+        "img-2"
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 0,
+        "ifPreviousCorrect": 1
+      }
+    },
+    {
+      "id": 10,
+      "type": "audio-select",
+      "question": "What do you hear in the gardens?",
+      "correctAnswers": [
+        "audio-3",
+        "audio-4"
+      ],
+      "incorrectAnswers": [
+        "audio-1",
+        "audio-2"
+      ],
+      "populationLogic": {
+        "mode": "conditional",
+        "ifPreviousIncorrect": 0,
+        "ifPreviousCorrect": 1
+      }
+    }
+  ]
+}

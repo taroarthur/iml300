@@ -1,5 +1,5 @@
 let duration = 5 * 60 * 1000;
-const END_KEY = "end_key";
+let END_KEY = "end_key";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -7,7 +7,7 @@ function setup() {
   textSize(32);
   textFont("Share Tech Mono");
 
-  const isStartPage = document.body.classList.contains("start-timer");
+  let isStartPage = document.body.classList.contains("start-timer");
 
   let endTime = Number(localStorage.getItem(END_KEY));
 
@@ -28,24 +28,24 @@ function setup() {
 function draw() {
   background(43, 79, 113);
 
-  const endTime = Number(localStorage.getItem(END_KEY));
-  const remaining = endTime - Date.now();
+  let endTime = Number(localStorage.getItem(END_KEY));
+  let remaining = endTime - Date.now();
 
   if (!Number.isFinite(endTime) || remaining <= 0) {
     window.location.href = "time-up.html";
     return;
   }
 
-  const totalSeconds = Math.ceil(remaining / 1000);
-  const mins = Math.floor(totalSeconds / 60);
-  const secs = totalSeconds % 60;
+  let totalSeconds = Math.ceil(remaining / 1000);
+  let mins = Math.floor(totalSeconds / 60);
+  let secs = totalSeconds % 60;
 
-  const timeString = `${mins}:${String(secs).padStart(2, "0")}`;
+  let timeString = `${mins}:${String(secs).padStart(2, "0")}`;
 
   fill(196);
   text(timeString, width / 2, 100);
 
-  const timerElement = document.getElementById("timer");
+  let timerElement = document.getElementById("timer");
   if (timerElement) timerElement.textContent = timeString;
 }
 
