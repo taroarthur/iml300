@@ -1,7 +1,6 @@
 const TOTAL_OPTIONS = 4;
 
 const STORAGE_KEYS = {
-  questionIndex: "currentQuestionIndex",
   correctCount: "correctCount",
   previousWasCorrect: "previousWasCorrect"
 };
@@ -9,29 +8,71 @@ const STORAGE_KEYS = {
 document.addEventListener("DOMContentLoaded", initGame);
 
 async function initGame() {
-  const response = await fetch("questions.json");
-  const data = await response.json();
-  const questions = data.questions;
+  try {
+    const response = await fetch("questions.json");
 
-  let currentQuestionIndex = Number(localStorage.getItem(STORAGE_KEYS.questionIndex));
-  if (!Number.isFinite(currentQuestionIndex)) currentQuestionIndex = 0;
+    if (!response.ok) {
+      throw new Error(`Failed to load questions.json (${response.status})`);
+    }
 
-  let correctCount = Number(localStorage.getItem(STORAGE_KEYS.correctCount));
-  if (!Number.isFinite(correctCount)) correctCount = 0;
+    const data = await response.json();
+    const questions = Array.isArray(data.questions) ? data.questions : [];
+    const currentQuestionIndex = getCurrentQuestionIndex();
 
-  const previousRaw = localStorage.getItem(STORAGE_KEYS.previousWasCorrect);
-  const previousWasCorrect = previousRaw === null ? null : previousRaw === "true";
+    if (!Number.isFinite(currentQuestionIndex)) {
+      console.error("Unable to determine the current question index from the page.");
+      return;
+    }
 
-  if (currentQuestionIndex >= questions.length) {
-    finishGame(correctCount, questions.length);
+    let correctCount = Number(localStorage.getItem(STORAGE_KEYS.correctCount));
+    if (!Number.isFinite(correctCount)) correctCount = 0;
+
+    const previousRaw = localStorage.getItem(STORAGE_KEYS.previousWasCorrect);
+    const previousWasCorrect = previousRaw === null ? null : previousRaw === "true";
+
+    if (currentQuestionIndex >= questions.length) {
+      finishGame(correctCount, questions.length);
+      return;
+    }
+
+    const questionData = questions[currentQuestionIndex];
+
+    if (!questionData) {
+      console.error(`No question data found for index ${currentQuestionIndex}.`);
+      return;
+    }
+
+    renderQuestion(questionData, previousWasCorrect, questions.length, currentQuestionIndex);
+  } catch (error) {
+    console.error("Unable to initialize question content.", error);
     return;
   }
-
-  const questionData = questions[currentQuestionIndex];
-  renderQuestion(questionData, previousWasCorrect, questions.length);
 }
 
-function renderQuestion(questionData, previousWasCorrect, totalQuestions) {
+function getCurrentQuestionIndex() {
+  const dataIndex = Number(document.body.dataset.questionIndex);
+  if (Number.isFinite(dataIndex)) {
+    return dataIndex;
+  }
+
+  const pathMatch = window.location.pathname.match(/question-(\d+)\.html$/);
+  if (pathMatch) {
+    return Number(pathMatch[1]) - 1;
+  }
+
+  const mainEl = document.querySelector("main");
+  if (!mainEl) {
+    return NaN;
+  }
+
+  const classMatch = [...mainEl.classList]
+    .map(className => className.match(/^question-(\d+)$/))
+    .find(Boolean);
+
+  return classMatch ? Number(classMatch[1]) - 1 : NaN;
+}
+
+function renderQuestion(questionData, previousWasCorrect, totalQuestions, currentQuestionIndex) {
   const questionEl = document.getElementById("question");
   const optionEls = document.querySelectorAll(".option");
 
@@ -57,7 +98,7 @@ function renderQuestion(questionData, previousWasCorrect, totalQuestions) {
 
     el.onclick = (e) => {
       e.preventDefault();
-      handleAnswer(option.isCorrect, totalQuestions);
+      handleAnswer(option.isCorrect, totalQuestions, currentQuestionIndex);
     };
   });
 }
@@ -78,10 +119,7 @@ function getCorrectCountForThisQuestion(questionData, previousWasCorrect) {
     : logic.ifPreviousIncorrect;
 }
 
-function handleAnswer(isCorrect, totalQuestions) {
-  let currentQuestionIndex = Number(localStorage.getItem(STORAGE_KEYS.questionIndex));
-  if (!Number.isFinite(currentQuestionIndex)) currentQuestionIndex = 0;
-
+function handleAnswer(isCorrect, totalQuestions, currentQuestionIndex) {
   let correctCount = Number(localStorage.getItem(STORAGE_KEYS.correctCount));
   if (!Number.isFinite(correctCount)) correctCount = 0;
 
@@ -89,21 +127,19 @@ function handleAnswer(isCorrect, totalQuestions) {
     correctCount += 1;
   }
 
-  currentQuestionIndex += 1;
-
-  localStorage.setItem(STORAGE_KEYS.questionIndex, String(currentQuestionIndex));
   localStorage.setItem(STORAGE_KEYS.correctCount, String(correctCount));
   localStorage.setItem(STORAGE_KEYS.previousWasCorrect, String(isCorrect));
 
-  if (currentQuestionIndex >= totalQuestions) {
+  // If this was the last question, finish.
+  if (currentQuestionIndex + 1 >= totalQuestions) {
     finishGame(correctCount, totalQuestions);
   } else {
-    window.location.href = "question.html";
+    const nextPageNumber = currentQuestionIndex + 2;
+    window.location.href = `question-${nextPageNumber}.html`;
   }
 }
 
 function finishGame(correctCount, totalQuestions) {
-  localStorage.removeItem(STORAGE_KEYS.questionIndex);
   localStorage.removeItem(STORAGE_KEYS.previousWasCorrect);
 
   if (correctCount === totalQuestions) {
