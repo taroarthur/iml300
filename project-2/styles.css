@@ -25,7 +25,7 @@ canvas{
 }
 
 body {
-    font-family: Helvetica Neue, sans-serif;
+    font-family: "Share Tech Mono", monospace;
 
     width: 100%;
     height: 100%;
@@ -38,7 +38,14 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background: linear-gradient(127deg, #E0E0E0, #2B4F71);
+   /* background: linear-gradient(127deg, #E0E0E0, #2B4F71); */
+
+   background-image: url("imitationgame_cover.png");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+
 }
 
 .title {
@@ -48,7 +55,7 @@ body {
     left: 547px;
     top: 428px;
     font-size: 24px;
-    font-family: Medium, sans-serif;
+    font-family: "Share Tech Mono";
     font-weight: 400;
     color: white;
     white-space: pre-wrap;
@@ -62,7 +69,7 @@ body {
     left: 547px;
     top: 458px;
     font-size: 12px;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: "Share Tech Mono";
     font-weight: 400;
     color: white;
     letter-spacing: -0.6px;
@@ -80,7 +87,7 @@ body {
     left: 547px;
     top: 571px;
     font-size: 12px;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: "Share Tech Mono";
     font-weight: 400;
     color: white;
     letter-spacing: -0.6px;
@@ -130,21 +137,36 @@ a:hover {
 
 .intro-text{
     color: #C4C4C4;
-    display: inline-block;
     width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
+    max-width: 1100px;
     font-family: "Share Tech Mono";
     font-size: 1em;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1.6;
     text-transform: uppercase;
+}
 
+.intro-line{
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(255,255,255,.75);
+    opacity: 0;
     animation:
-    typewriter 4s steps(48) 1s 1 normal both,
-    blinkTextCursor 500ms steps(48) infinite normal;
+        introTypewriter 2.4s steps(var(--chars)) var(--delay) 1 both,
+        blinkTextCursor 500ms steps(44) var(--delay) infinite;
+}
 
+.intro-link{
+    margin-top: 1rem;
+}
+
+.intro-link:hover{
+    color: #C4C4C4;
 }
 
 .question-1, .question-2, .question-3, .question-4, .question-5, .question-6, .question-7, .question-8, .question-9, .question-10{
@@ -240,6 +262,18 @@ a:hover {
   from{width: 0;}
   to{width: 100ch;}
 }
+
+@keyframes introTypewriter{
+  from{
+    width: 0;
+    opacity: 1;
+  }
+  to{
+    width: calc(var(--chars) * 1ch);
+    opacity: 1;
+  }
+}
+
 @keyframes blinkTextCursor{
   from{border-right-color: rgba(255,255,255,.75);}
   to{border-right-color: transparent;}
