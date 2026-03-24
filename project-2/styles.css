@@ -21,7 +21,7 @@ canvas{
     inset: 0;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 0;
+    z-index: -1;
 }
 
 body {
@@ -29,8 +29,7 @@ body {
 
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 
     
 }
@@ -170,28 +169,21 @@ a:hover {
 }
 
 .question-1, .question-2, .question-3, .question-4, .question-5, .question-6, .question-7, .question-8, .question-9, .question-10{
-
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px;
+    padding: 100px 25vw;
     justify-content: center;
     gap: 80px;
     position: relative;
-    z-index: 1;
-
     width: 100%;
-    min-height: 100%;
+    height: 100%;
 }
 
-.timer,
+.timer
 .question,
-.options,
-.option {
-    position: relative;
-    z-index: 2;
-}
+.options {position: relative; }
 
 .timer{
     position: absolute;
@@ -201,7 +193,6 @@ a:hover {
     font-family: "Share Tech Mono";
     font-size: 20px;
     color: #C4C4C4;
-    z-index: 2;
 }
 
 .question{
@@ -216,10 +207,6 @@ a:hover {
 .options{
    /* width: min(1100px, calc(100vw - 120px)); */
     margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
 
     font-family: "Share Tech Mono";
     font-size: 30px;
@@ -231,8 +218,7 @@ a:hover {
 
 .option{
     width: 100%;
-    min-height: 95px;
-    display: block;
+    height: 95px;
 
     /* justify-content: center; */
     color: #C4C4C4;
@@ -273,13 +259,7 @@ a:hover {
     transition: filter 1s ease
 }
 
-.options[data-question-type="image-select"]{
-    width: min(520px, 100%);
-    gap: 32px;
-}
-
 .options[data-question-type="image-select"] .option{
-    min-height: 0;
     height: auto;
     filter: none;
 }

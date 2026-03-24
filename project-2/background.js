@@ -2,7 +2,7 @@ function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
   canvas.style("position", "fixed");
-  canvas.style("z-index", "0");
+  canvas.style("z-index", "-1");
   canvas.style("pointer-events", "none");
 }
 
