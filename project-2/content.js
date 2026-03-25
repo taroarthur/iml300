@@ -78,8 +78,14 @@ function renderQuestion(questionData, previousWasCorrect, totalQuestions, curren
   const optionEls = [...document.querySelectorAll(".option")];
   const optionsContainer = document.getElementById("options");
 
+  questionEl.classList.remove("typewriter");
   questionEl.textContent = questionData.question;
-  questionEl.classList.toggle("typewriter", questionData.type === "text");
+
+  if (questionData.type === "text") {
+    // Force the typewriter animation to restart after injecting new text.
+    void questionEl.offsetWidth;
+    questionEl.classList.add("typewriter");
+  }
 
   if (optionsContainer) {
     optionsContainer.dataset.questionType = questionData.type;
@@ -124,7 +130,7 @@ function renderQuestion(questionData, previousWasCorrect, totalQuestions, curren
 }
 
 function getTotalOptionsForQuestion(questionData) {
-  if (questionData.type === "image-select") {
+  if (questionData.type === "image-select" || questionData.type === "audio-select") {
     return questionData.correctAnswers.length + questionData.incorrectAnswers.length;
   }
 
@@ -132,7 +138,7 @@ function getTotalOptionsForQuestion(questionData) {
 }
 
 function getOptionCountsForQuestion(questionData, previousWasCorrect) {
-  if (questionData.type === "image-select") {
+  if (questionData.type === "image-select" || questionData.type === "audio-select") {
     return {
       numCorrectToShow: questionData.correctAnswers.length,
       numIncorrectToShow: questionData.incorrectAnswers.length
@@ -161,6 +167,38 @@ function renderOptionContent(optionEl, value, questionType) {
     image.alt = "Question option image";
     image.className = "option-image";
     optionEl.appendChild(image);
+    return;
+  }
+
+  if (questionType === "audio-select") {
+    const audioOption = document.createElement("span");
+    audioOption.className = "audio-option";
+
+    const audio = document.createElement("audio");
+    audio.src = value;
+    audio.className = "option-audio";
+    audio.controls = true;
+    audio.preload = "metadata";
+    audio.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+    audio.addEventListener("pointerdown", (event) => {
+      event.stopPropagation();
+    });
+    audio.addEventListener("mousedown", (event) => {
+      event.stopPropagation();
+    });
+    audio.addEventListener("touchstart", (event) => {
+      event.stopPropagation();
+    }, { passive: true });
+
+    const selectLabel = document.createElement("span");
+    selectLabel.className = "audio-select-label";
+    selectLabel.textContent = "select";
+
+    audioOption.appendChild(audio);
+    audioOption.appendChild(selectLabel);
+    optionEl.appendChild(audioOption);
     return;
   }
 

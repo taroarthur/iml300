@@ -1,6 +1,8 @@
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0, 0);
+  
+  // AI-assisted code – I coultn't figure out a way to point CSS tags to p5 content, so AI helped me write these three lines. 
   canvas.style("position", "fixed");
   canvas.style("z-index", "-1");
   canvas.style("pointer-events", "none");
@@ -72,6 +74,8 @@ function drawGradient() {
     );
   }
 }
+
+// vertical gradient
 
 function vertical(top, bottom) {
   for (let y = 0; y < height; y++) {

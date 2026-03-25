@@ -1,3 +1,5 @@
+// absorbed by background.js
+
 const TIMER_DURATION_MS = 5 * 60 * 1000;
 const TIMER_START_KEY = "timerStart";
 const WARNING_THRESHOLD_MS = 60 * 1000;

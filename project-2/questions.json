@@ -201,12 +201,10 @@
       "type": "audio-select",
       "question": "What do you hear in the gardens?",
       "correctAnswers": [
-        "audio-3",
-        "audio-4"
+        "audio-1.mp3"
       ],
       "incorrectAnswers": [
-        "audio-1",
-        "audio-2"
+        "audio-2.wav"
       ],
       "populationLogic": {
         "mode": "conditional",

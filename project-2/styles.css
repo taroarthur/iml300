@@ -163,7 +163,7 @@ a:hover {
 }
 
 .intro-link:hover{
-    color: #C4C4C4;
+    color: #2B4F71;
 }
 
 .question-1, .question-2, .question-3, .question-4, .question-5, .question-6, .question-7, .question-8, .question-9, .question-10{
@@ -257,12 +257,35 @@ a:hover {
     transition: filter 1s ease
 }
 
-.options[data-question-type="image-select"] .option{
+.option-audio{
+    display: block;
+    width: min(420px, 100%);
+    margin: 0 auto;
+}
+
+.audio-option{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.audio-select-label{
+    color: #C4C4C4;
+    font-family: "Share Tech Mono";
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.options[data-question-type="image-select"] .option,
+.options[data-question-type="audio-select"] .option{
     height: auto;
     filter: none;
 }
 
-.options[data-question-type="image-select"] .option:hover{
+.options[data-question-type="image-select"] .option:hover,
+.options[data-question-type="audio-select"] .option:hover{
     opacity: 1;
 }
 
@@ -277,8 +300,7 @@ a:hover {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    animation: typewriter 4s steps(44) 1s 1 normal both,
-             /*  blinkTextCursor 500ms steps(44) infinite normal; */
+    animation: typewriter 4s steps(44) 1s 1 normal both;
 }
 @keyframes typewriter{
   from{width: 0;}
