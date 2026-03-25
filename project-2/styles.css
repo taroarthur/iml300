@@ -155,9 +155,7 @@ a:hover {
     overflow: hidden;
     white-space: nowrap;
     opacity: 0;
-    animation:
-        introTypewriter 2.4s steps(var(--chars)) var(--delay) 1 both,
-        /* blinkTextCursor 500ms steps(44) var(--delay) infinite; */ 
+    animation: introTypewriter 2.4s steps(var(--chars)) var(--delay) 1 both;
 }
 
 .intro-link{
