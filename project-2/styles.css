@@ -157,7 +157,7 @@ a:hover {
     opacity: 0;
     animation:
         introTypewriter 2.4s steps(var(--chars)) var(--delay) 1 both,
-        blinkTextCursor 500ms steps(44) var(--delay) infinite;
+        /* blinkTextCursor 500ms steps(44) var(--delay) infinite; */ 
 }
 
 .intro-link{
@@ -267,9 +267,6 @@ a:hover {
 .options[data-question-type="image-select"] .option:hover{
     opacity: 1;
 }
-
-
-
 
 
 ::selection {
