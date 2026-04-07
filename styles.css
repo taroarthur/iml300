@@ -1,0 +1,187 @@
+:root {
+  --grey: #B1B1B1;
+  --lime: #B6F800;
+  --black: #323232;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--grey);
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  color: var(--black);
+  padding: 36px;
+}
+
+.page-container {
+    max-width: 150vh;
+    margin: 0 auto;
+}
+
+/* navigation bar */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--grey);
+}
+
+
+.site-nav {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+.nav-home {
+  text-decoration: none;
+  color: #3a3a3a;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+
+.nav-links {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--black);
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--black);
+  font-family: "Geist", sans-serif;
+  font-weight: normal;
+}
+
+.nav-links a:hover {
+  color: var(--lime);
+}
+
+/* hero content */
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+    padding: 100px 0;
+    margin-bottom: 50vh;
+
+
+}
+
+.hero-title-1{
+    color: var(--lime);
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.hero-title-2{
+    color: var(--black);
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+/* headers */
+
+.h1{
+    color: var(--black);
+    font-size: 75px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 24px;
+
+}
+
+.h2{
+    color: var(--black);
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 24px;
+
+}
+
+.section-title {
+  font-size: 36px;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.project-card {
+  margin-bottom: 48px;
+}
+
+.project-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.content-link {
+  text-decoration: none;
+  color: var(--black);
+  font-size: 18px;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.content-link:hover {
+  color: var(--lime);
+}
+
+
+.presentation,
+.projects,
+.exercises,
+.vibecoding {
+  margin-top: 64px;
+  margin-bottom: 0;
+  padding: 0;
+  scroll-margin-top: 100px;
+}
+
+.embed-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.embed-container iframe {
+  display: block;
+}
+
+
+
+::selection {
+  background-color: var(--lime);
+  color: var(--black);
+}

@@ -2,50 +2,132 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Taro's Homepage</title>
-    <!--Update with your name-->
+    <title>TARO ARHUR IML300 PORTFOLIO</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+
+
   </head>
 
   <body>
-    <div>
-      <h1>TARO ARTHUR: IML 300 PORTFOLIO</h1>
-      <!--Update with your name-->
-      <p>
-        Projects for IML 300, Spring 2026. 
-      </p>
-    </div>
+  <!--page container-->
+  <main class = "page-container">
+    <header class = "site-header">
+      <nav class = "site-nav">
+        <a href="#top" class="nav-home">IML300 Portfolio</a>
+        <div class="nav-links">
+          <a href="#pechakucha">Pecha Kucha</a>
+          <a href="#projects">Projects</a>
+          <a href="#exercises">Exercises</a>
+          <a href="#vibecoding">Vibe Coding</a>
 
-    <div>
-      <h1>Presentation</h1>
-      <a href="">Pecha Kucha: Lorem Ipsum</a>
-    </div>
+        </div>
 
-    <div>
-      <h1>Projects</h1>
-      <h2>Project 1: Interactive Audio & Visual with p5.js</h2>
-      <a href="https://editor.p5js.org/taroarthur/sketches/qHa396F7A">Simple Synth</a>
-      <h2>Project 2: HyperNarrative</h2>
-      <a href="https://docs.google.com/document/d/e/2PACX-1vSh2D-BX90YMdB0RhGEKuFmhRx-JkPrBVUPy0iQ29Wq-V4RmpQjbKPjaK9iTnlhwU65LEFkhLjenqBh/pub">Concept</a><br />
-      <a href="https://taroarthur.github.io/iml300/project-2">IMITATION GAME</a>
-      <h2>Project 3: Networked Care</h2>
-      <a href="">Final: Lorem Ipsum</a>
-    </div>
+      </nav>
+    </header>
 
-    <div>
-      <h1>Exercises</h1>
-      <ul>
-        <li><a href="https://editor.p5js.org/taroarthur/sketches/HcdH9tDlo">p5.js face sketch</a></li>
-        <li><a href="https://editor.p5js.org/taroarthur/sketches/oCmH8cU9y">p5.js pentool sketch</a></li>
-        <li><a href="https://editor.p5js.org/taroarthur/sketches/RyPpkcriW">p5.js pattern sketch 1</a></li>
-        <li><a href="https://editor.p5js.org/taroarthur/sketches/bNaLCYHeA">p5.js pattern sketch 2</a></li>
-        <li><a href="https://editor.p5js.org/taroarthur/sketches/t2aYdgOfY">p5.js 30s music video</a></li>
-        <li><a href="https://editor.p5js.org/taroarthur/sketches/-_hO1f-Hn">p5.js computational poetry</a></li>
-      </ul>
-    </div>
 
-    <!--add a h1 element called 'Thoughts' Below-->
-    <h1>Thoughts</h1>
+ <!--hero content-->
 
-    <footer>printemps/26.</footer>
-  </body>
+ <section class = "hero" id = "top">
+  <p class = "hero-title-1">Taro Arthur's</p>
+  <p class = "hero-title-2">IML300 Portfolio</p>
+  <p class = "hero-subtitle">Projects created for IML300, Spring 2026. Scroll down or use navication bar to view work</p>
+  </section>
+
+  <!--presentation-->
+  <section class = "presentation" id = "pechakucha">
+
+    <h1 class = "section-title">Pecha Kucha</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GYrwuIVzBIA?si=N_rB-7C2ma6diBTy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </br>
+    <a href = "https://drive.google.com/file/d/16GI033AQDSisNSggUsM7Zt0Rk_Npt_NY/view?usp=sharing" class = "content-link" target="_blank">[download slides]</a>
+
+    
+
+    </section>
+  
+    <!--projects-->
+    
+    <section class = "projects" id = "projects">
+      <h1 class = "section-title">Projects</h1>
+
+      <article class = "project-card">
+        <h2 class = "project-title">Project 1: Interactive Audio & Visual with p5.js</h2>
+        <div class="embed-container">
+          <iframe width="1000" height="1000" src="https://editor.p5js.org/taroarthur/full/qHa396F7A" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class = "project-card">
+        <div class="embed-container">
+          <iframe width="1000" height="1000" src="https://docs.google.com/document/d/e/2PACX-1vSh2D-BX90YMdB0RhGEKuFmhRx-JkPrBVUPy0iQ29Wq-V4RmpQjbKPjaK9iTnlhwU65LEFkhLjenqBh/pub?embedded=true" frameborder="0"></iframe>
+        </div>
+        <h2 class = "project-title">Project 2: HyperNarrative</h2>
+        <a href="https://taroarthur.github.io/iml300/project-2" class="content-link" target="_blank">IMITATION GAME [opens externally]</a>
+      </article>
+
+      <article class = "project-card">
+        <h2 class = "project-title">Project 3: Networked Care</h2>
+        <a href="#" class="content-link" target="_blank">Final: Lorem Ipsum</a>
+      </article>
+    </section>
+
+    <section class="exercises" id="exercises">
+      <h1 class="section-title">Exercises</h1>
+      
+      <article class="project-card">
+        <h2 class="project-title">p5.js face sketch</h2>
+        <div class="embed-container">
+          <iframe width="500" height="500" src="https://editor.p5js.org/taroarthur/full/HcdH9tDlo" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title">p5.js pentool sketch</h2>
+        <div class="embed-container">
+          <iframe width="500" height="500" src="https://editor.p5js.org/taroarthur/full/oCmH8cU9y" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title">p5.js pattern sketch 1</h2>
+        <div class="embed-container">
+          <iframe width="500" height="500" src="https://editor.p5js.org/taroarthur/full/RyPpkcriW" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title">p5.js pattern sketch 2</h2>
+        <div class="embed-container">
+          <iframe width="500" height="500" src="https://editor.p5js.org/taroarthur/full/bNaLCYHeA" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title">p5.js 30s music video</h2>
+        <div class="embed-container">
+          <iframe width="500" height="500" src="https://editor.p5js.org/taroarthur/full/t2aYdgOfY" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title">p5.js computational poetry</h2>
+        <div class="embed-container">
+          <iframe width="800" height="800" src="https://editor.p5js.org/taroarthur/full/-_hO1f-Hn" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </article>
+    </section>
+
+    <section class="vibe-coding" id="vibecoding">
+      <h1>Vibe Coding</h1>
+      <a href="https://taroarthur.github.io/iml300_vibecoding_exercises/" class="content-link" target="_blank">[opens externally]</a>
+    </section>
+
+  </main>
+</body>
 </html>
