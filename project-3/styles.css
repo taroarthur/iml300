@@ -58,19 +58,26 @@ body {
 .sidebar-item.active {
     color: #ffffff;
     font-family: "franklin-gothic-atf", sans-serif;
-    font-weight: 600;
     font-style: normal;
 }
 
 .sidebar-icon {
     width: 24px;
     height: 24px;
-    background: #333333;
+    /*background: #333333;*/
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
+}
+
+.sidebar-icon img,
+.control-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2px;
 }
 
 .playlist-section {
@@ -109,6 +116,7 @@ body {
 }
 
 .header-title {
+    font-family: "franklin-gothic-atf", sans-serif;
     font-size: 48px;
     font-weight: 600;
     font-style: normal;
@@ -141,7 +149,7 @@ body {
 .rec-image {
     width: 100%;
     aspect-ratio: 1;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #2d5016;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -232,7 +240,7 @@ body {
 .mix-image {
     width: 100%;
     aspect-ratio: 1;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #2d5016;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -243,7 +251,7 @@ body {
 }
 
 .mix-card.active .mix-image {
-    background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+    background: #1db954;
     color: rgba(0, 0, 0, 0.3);
 }
 
@@ -295,7 +303,7 @@ body {
 .player-thumbnail {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #667eea;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -405,6 +413,38 @@ body {
     gap: 15px;
     align-items: center;
 }
+
+/*quote page*/
+
+.quote-wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.quote {
+  margin: 0;
+  font-size: 30px;
+  line-height: 2;
+  color: white;
+  font-weight: 200;
+  font-family: "franklin-gothic-atf", sans-serif;
+  font-style: normal;
+  text-align: center;
+  max-width: 900px;
+  width: min(80vw, 900px);
+}
+
+.quote .word {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+
 
 /* Scrollbar */
 ::-webkit-scrollbar {
