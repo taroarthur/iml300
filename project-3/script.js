@@ -88,8 +88,28 @@ $(document).ready(function() {
 
     // Sidebar item active state - apply bold styling via jQuery
     $('.sidebar-item').click(function() {
+        const href = $(this).data('href');
+        if (href) {
+            window.location.href = href;
+        }
         $('.sidebar-item').removeClass('active').css('font-weight', '400');
         $(this).addClass('active').css('font-weight', '600');
+    });
+
+    // Playlist item navigation
+    $('.playlist-item').click(function() {
+        const href = $(this).data('href');
+        if (href) {
+            window.location.href = href;
+        }
+    });
+
+    // Recommendation card navigation
+    $('.rec-card').click(function() {
+        const href = $(this).data('href');
+        if (href) {
+            window.location.href = href;
+        }
     });
 
 
