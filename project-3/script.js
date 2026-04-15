@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // 1. Page Load Animations - Content fades in nicely
+    // page loads
     $('.recommendations, .mixes-grid').hide().fadeIn(800);
     $('.header-title').hide().fadeIn(1000);
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
         }
     );
 
-    // 3. Recommendation Card Hover - Image fades on hover
+    // recommendation hover
     $('.rec-card').hover(
         function() {
             $(this).find('.rec-image').animate({ opacity: 0.8 }, 250);
@@ -25,7 +25,7 @@ $(document).ready(function() {
         }
     );
 
-    // 4. Like/Heart with Animation - Heart button animates and swaps icon when clicked
+    // heart button toggle animation
     let isLiked = false;
     $('.control-button').last().click(function(e) {
         e.preventDefault();
@@ -42,7 +42,7 @@ $(document).ready(function() {
         }
     });
 
-    // 5. Control Button Hover Effects - Buttons scale up on hover (excluding play button)
+    // button hover effects
     $('.control-button').not('.play').hover(
         function() {
             $(this).stop(true, false).animate({ 

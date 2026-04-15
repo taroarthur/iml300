@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Firebase Text Input Demo</title>
+
+    <!-- Include firebase scripts from CDN      -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
+
+    <!-- Import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- This input form controls submission of text input -->
+    <div class="container">
+      <form id="text-input-form" onsubmit="return false">
+        <input type="text" id="text-input-entry" placeholder="What is your favourite song?" />
+      </form>
+
+      <div id="entries-container"></div>
+    </div>
+  </body>
+</html>
