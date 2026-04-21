@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Facts - Streaming Economy</title>
+
+    <!-- Import fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Import stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="facts-page">
+    <div class="facts-container">
+        <!-- Sidebar Navigation -->
+        <aside class="facts-sidebar">
+            <h1 class="facts-title">The Facts</h1>
+            <nav class="facts-nav">
+                <a href="#illusion" class="facts-nav-link active" data-section="illusion">illusion</a>
+                <a href="#numbers" class="facts-nav-link" data-section="numbers">numbers</a>
+                <a href="#platform-comparison" class="facts-nav-link" data-section="platform-comparison">platform comparison</a>
+                <a href="#tradeoff" class="facts-nav-link" data-section="tradeoff">tradeoff</a>
+                <a href="#reality" class="facts-nav-link" data-section="reality">the reality</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="facts-content">
+            <!-- Illusion Section -->
+            <section id="illusion" class="facts-section active">
+                <div class="section-split">
+                    <div class="section-half">
+                        <h2 class="section-title">The Illusion</h2>
+                        <p class="section-subtitle">Millions of streams ≠ millions of dollars</p>
+                    </div>
+                    <div class="section-half">
+                        <p class="section-text">In order to earn minimum yearly income in the US, an artist has to have millions of streams. It's not a sustainable financial system.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Numbers Section -->
+            <section id="numbers" class="facts-section">
+                <div class="section-split">
+                    <div class="section-half">
+                        <div class="big-number">$0.003</div>
+                        <p class="big-label">How Much 1 Stream On Spotify Earns</p>
+                    </div>
+                    <div class="section-half">
+                        <div class="earnings-calculator">
+                            <label for="stream-slider">Enter stream count:</label>
+                            <input type="range" id="stream-slider" class="slider" min="0" max="10000000" value="1000000" step="100000">
+                            <div class="slider-display">
+                                <span class="slider-value">1,000,000</span> streams
+                            </div>
+                            <div class="earnings-result">
+                                <p class="result-label">Potential Earnings:</p>
+                                <p class="result-amount">$3,000 – $5,000</p>
+                                <p class="result-context">Based on Spotify payout range: $0.003–$0.005 per stream</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings Table -->
+                <div class="section-table">
+                    <h3 class="table-title">Streams Required to Earn</h3>
+                    <table class="earnings-table">
+                        <thead>
+                            <tr>
+                                <th>Goal</th>
+                                <th>Spotify</th>
+                                <th>Apple Music</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$100</td>
+                                <td>~28,500 streams</td>
+                                <td>~14,000 streams</td>
+                            </tr>
+                            <tr>
+                                <td>$1,000</td>
+                                <td>~285,000 streams</td>
+                                <td>~140,000 streams</td>
+                            </tr>
+                            <tr>
+                                <td>$10,000</td>
+                                <td>~2.8M streams</td>
+                                <td>~1.4M streams</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Platform Comparison Section -->
+            <section id="platform-comparison" class="facts-section">
+                <h2 class="section-title">Platform Comparison</h2>
+
+                <div class="comparison-container">
+                    <div class="comparison-chart">
+                        <h3 class="chart-title">Per-Stream Payout vs Audience Size</h3>
+                        <div class="platform-bars">
+                            <div class="platform-item">
+                                <div class="platform-bar" style="--payout-width: 40%; --bar-color: var(--dark);">
+                                    <span class="platform-payout">$0.003–$0.005</span>
+                                </div>
+                                <p class="platform-name">Spotify</p>
+                                <p class="platform-size">600M+ users</p>
+                            </div>
+
+                            <div class="platform-item">
+                                <div class="platform-bar" style="--payout-width: 70%; --bar-color: var(--accent);">
+                                    <span class="platform-payout">$0.006–$0.010</span>
+                                </div>
+                                <p class="platform-name">Apple Music</p>
+                                <p class="platform-size">100M+ users</p>
+                            </div>
+
+                            <div class="platform-item">
+                                <div class="platform-bar" style="--payout-width: 85%; --bar-color: #1db954;">
+                                    <span class="platform-payout">$0.010+</span>
+                                </div>
+                                <p class="platform-name">TIDAL</p>
+                                <p class="platform-size">Limited users</p>
+                            </div>
+
+                            <div class="platform-item">
+                                <div class="platform-bar" style="--payout-width: 60%; --bar-color: #FF0000;">
+                                    <span class="platform-payout">$0.004–$0.008</span>
+                                </div>
+                                <p class="platform-name">Amazon Music</p>
+                                <p class="platform-size">Large user base</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-insight">
+                        <h3>The Tradeoff</h3>
+                        <p><strong>Higher payout doesn't mean better.</strong></p>
+                        <p>Artists optimize for total revenue (streams × rate), not payout per stream.</p>
+                        <ul>
+                            <li><strong>Spotify:</strong> Reach + discovery (lower rate, massive audience)</li>
+                            <li><strong>Apple Music:</strong> Higher per-stream, but smaller audience</li>
+                            <li><strong>TIDAL:</strong> Highest rates, lowest audience</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tradeoff Section -->
+            <section id="tradeoff" class="facts-section">
+                <h2 class="section-title">The Tradeoff</h2>
+
+                <div class="tradeoff-grid">
+                    <div class="tradeoff-box reach">
+                        <h3>Reach</h3>
+                        <p class="metric">600M+ Users</p>
+                        <p class="detail">Spotify = Discovery Engine</p>
+                        <p class="benefit">Algorithms drive exposure</p>
+                    </div>
+
+                    <div class="tradeoff-divider">⟷</div>
+
+                    <div class="tradeoff-box payout">
+                        <h3>Payout</h3>
+                        <p class="metric">$0.003/stream</p>
+                        <p class="detail">Low margins on high volume</p>
+                        <p class="benefit">Revenue depends on scale</p>
+                    </div>
+                </div>
+
+                <div class="tradeoff-reality">
+                    <p class="insight-title">Critical Insight:</p>
+                    <p class="insight-text">Streaming is a high-volume, low-margin economy where visibility is abundant but income is scarce.</p>
+                </div>
+            </section>
+
+            <!-- Reality Section -->
+            <section id="reality" class="facts-section">
+                <h2 class="section-title">The Reality</h2>
+
+                <div class="reality-sections">
+                    <div class="reality-box">
+                        <h3 class="reality-subtitle">Why Streaming Dominates</h3>
+                        <ul class="reality-list">
+                            <li>Spotify paid <strong>$11 billion</strong> in 2025</li>
+                            <li><strong>~70%</strong> goes to rights holders</li>
+                            <li>Massive total payouts, tiny individual earnings</li>
+                        </ul>
+                    </div>
+
+                    <div class="reality-box">
+                        <h3 class="reality-subtitle">Streaming Still Matters Because</h3>
+                        <ol class="reality-list">
+                            <li><strong>Discovery Engine</strong> – Playlists & algorithms drive exposure</li>
+                            <li><strong>Funnel to Revenue</strong> – Tours, merch, sync deals</li>
+                            <li><strong>Global Distribution</strong> – Zero marginal cost, instant worldwide reach</li>
+                        </ol>
+                    </div>
+
+                    <div class="reality-box">
+                        <h3 class="reality-subtitle">Structural Problems</h3>
+                        <ul class="reality-list">
+                            <li><strong>Winner-takes-most</strong> – Top artists capture disproportionate revenue</li>
+                            <li><strong>Fraud/bot streams</strong> – Artificial plays dilute revenue pool</li>
+                            <li><strong>Oversupply</strong> – Thousands of tracks uploaded daily</li>
+                        </ul>
+                    </div>
+
+                    <div class="reality-box">
+                        <h3 class="reality-subtitle">The Hard Truth</h3>
+                        <div class="hard-truth">
+                            <p><strong>&lt;10k streams</strong> = ~$0</p>
+                            <p><strong>100k streams</strong> = ~$300–$700</p>
+                            <p><strong>1M streams</strong> = ~$3k–$10k</p>
+                            <p style="margin-top: 20px; font-style: italic;">Streaming alone is not sustainable income for most artists.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Facts Script -->
+    <script src="facts-script.js"></script>
+</body>
+</html>
