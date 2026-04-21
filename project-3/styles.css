@@ -1,3 +1,9 @@
+:root {
+  --accent: #F5FC00;
+  --light: #C1C5BF;
+  --dark: #313131;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +11,10 @@
 }
 
 body {
-    font-family: "franklin-gothic-atf", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background: #121212;
-    color: #ffffff;
+    font-family: "Instrument Sans", sans-serif;
+    font-weight: 500;
+    background: var(--light);
+    color: var(--dark);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -24,7 +29,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background: #000000;
+    background: var(--dark);
     border-right: 1px solid #282828;
     overflow-y: auto;
     display: flex;
@@ -41,9 +46,9 @@ body {
     padding: 10px 0;
     cursor: pointer;
     color: #b3b3b3;
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     transition: color 0.2s;
     display: flex;
@@ -57,7 +62,7 @@ body {
 
 .sidebar-item.active {
     color: #ffffff;
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-style: normal;
 }
 
@@ -90,9 +95,9 @@ body {
     padding: 8px 20px;
     cursor: pointer;
     color: #b3b3b3;
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     transition: color 0.2s;
     white-space: nowrap;
@@ -116,9 +121,9 @@ body {
 }
 
 .header-title {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Serif", serif;
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
     line-height: 1.1;
     max-width: 800px;
@@ -164,18 +169,18 @@ body {
 }
 
 .rec-title {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Serif", serif;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
     margin-bottom: 8px;
     line-height: 1.2;
 }
 
 .rec-artist {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     color: #b3b3b3;
 }
@@ -198,9 +203,9 @@ body {
 }
 
 .see-all {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     color: #b3b3b3;
     cursor: pointer;
@@ -260,18 +265,18 @@ body {
 }
 
 .mix-title {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Serif", serif;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
     margin-bottom: 8px;
     line-height: 1.2;
 }
 
 .mix-description {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     color: #b3b3b3;
     line-height: 1.4;
@@ -318,16 +323,16 @@ body {
 }
 
 .player-title {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Serif", serif;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
 }
 
 .player-artist {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     color: #b3b3b3;
 }
@@ -400,9 +405,9 @@ body {
 }
 
 .time {
-    font-family: "franklin-gothic-atf", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     color: #b3b3b3;
     min-width: 30px;
@@ -423,16 +428,17 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  background: var(--light);
 }
 
 .quote {
   margin: 0;
   font-size: 30px;
   line-height: 2;
-  color: white;
-  font-weight: 200;
-  font-family: "franklin-gothic-atf", sans-serif;
-  font-style: normal;
+  color: var(--dark);
+  font-weight: 400;
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
   text-align: center;
   max-width: 900px;
   width: min(80vw, 900px);
@@ -462,4 +468,573 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #535353;
+}
+
+/* Index page styles */
+
+body.index-page {
+    font-family: "Instrument Sans", sans-serif;
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 60px 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+#p5-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#p5-container canvas {
+    display: block;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 60px 80px;
+    width: 100%;
+    pointer-events: none;
+}
+
+.content > * {
+    pointer-events: auto;
+}
+
+.header {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.title {
+    
+    font-family: "Instrument Serif", serif;
+    color: var(--dark);
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 1.2;
+    max-width: 1000px;
+    letter-spacing: -2px;
+    /*text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); */
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.nav-btn {
+    height: 50px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 121px;
+    background: var(--accent);
+    cursor: pointer;
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 19.9px 15px #456710 inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: #B8FF4D;
+    transform: scale(1.05);
+}
+
+.nav-btn:active {
+    transform: scale(0.98);
+}
+
+.nav-btn.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    body.index-page {
+        padding: 40px 30px;
+    }
+
+    .title {
+        font-size: 48px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 15px;
+    }
+
+    .nav-btn {
+        height: 45px;
+        padding: 0 20px;
+    }
+
+    .nav-btn.circle {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* ==================== RECORD STORES PAGE ==================== */
+
+.record-stores-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Search Bar */
+.search-bar {
+  background: var(--light);
+  border-bottom: 2px solid var(--dark);
+  padding: 20px 40px;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-title {
+  font-family: "Instrument Serif", serif;
+  font-size: 32px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+.search-input-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark);
+  background: white;
+  border: 2px solid var(--dark);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 252, 0, 0.2);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-btn,
+.nearby-btn {
+  padding: 0 24px;
+  height: 44px;
+}
+
+/* Map Container */
+#map-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  background: #f0f0f0;
+  z-index: 1;
+}
+
+#map-container canvas {
+  display: block;
+}
+
+/* Info Panel */
+.info-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 50%;
+  background: var(--light);
+  border-top: 2px solid var(--dark);
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.info-panel.open {
+  transform: translateY(0);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(49, 49, 49, 0.2);
+}
+
+.panel-header h2 {
+  font-family: "Instrument Serif", serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--dark);
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--dark);
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+.results-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+  font-style: italic;
+}
+
+.store-card {
+  background: white;
+  border: 1px solid rgba(49, 49, 49, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.store-card:hover {
+  background: #f9f9f9;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 252, 0, 0.2);
+}
+
+.store-name {
+  font-family: "Instrument Serif", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark);
+  margin: 0 0 8px 0;
+}
+
+.store-address {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.store-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.store-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.store-rating span {
+  color: #1db954;
+  font-weight: 600;
+}
+
+.store-distance {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.view-btn {
+  background: var(--accent);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.view-btn:hover {
+  background: #B8FF4D;
+  transform: scale(1.02);
+}
+
+/* Custom Marker Styles */
+.gm-style .gm-style-iw-c {
+  border-radius: 8px;
+  padding: 0 !important;
+}
+
+.info-window-content {
+  padding: 12px;
+  font-family: "Instrument Sans", sans-serif;
+  color: var(--dark);
+}
+
+.info-window-title {
+  font-family: "Instrument Serif", serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 6px 0;
+}
+
+.info-window-address {
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 6px 0;
+}
+
+.info-window-rating {
+  font-size: 12px;
+  color: #1db954;
+  margin: 0;
+}
+
+/* Scrollbar Styling */
+.results-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.results-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.results-list::-webkit-scrollbar-thumb {
+  background: rgba(49, 49, 49, 0.3);
+  border-radius: 3px;
+}
+
+.results-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(49, 49, 49, 0.5);
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #999;
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  border: 2px solid rgba(49, 49, 49, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Record Stores Responsive Design */
+@media (max-width: 768px) {
+  .search-bar {
+    padding: 16px 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .search-input-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-btn,
+  .nearby-btn {
+    width: 100%;
+  }
+
+  .info-panel {
+    max-height: 70%;
+  }
+
+  .panel-header h2 {
+    font-size: 18px;
+  }
+
+  .store-name {
+    font-size: 14px;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--dark);
+}
+
+/* ==================== FAV-SONG PAGE ==================== */
+
+body.fav-song-page {
+  background-color: #111111;
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.fav-song-page .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#text-input-form {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 10;
+  display: flex;
+  font-size: 100px;
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#text-input-entry {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 5vw;
+  color: #716f6f;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #716f6f;
+  padding: 20px 15px;
+  width: 28ch;
+  max-width: 90vw;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.3s ease;
+  line-height: 1.2;
+  overflow: visible;
+}
+
+#text-input-entry::placeholder {
+  color: #716f6f;
+  font-style: italic;
+}
+
+#text-input-entry:focus {
+  border-bottom-color: var(--accent);
+}
+
+#entries-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-entry {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+  position: fixed;
+  color: var(--accent);
+  font-size: 2rem;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  left: var(--start-x, 50%);
+  top: var(--start-y, 50%);
 }

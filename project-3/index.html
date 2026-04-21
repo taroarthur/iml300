@@ -5,158 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Streaming Economy</title>
     <link rel="stylesheet" href="https://use.typekit.net/mqu1tbf.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "franklin-gothic-atf", sans-serif;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            height: 100vh;
-            padding: 60px 80px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        #p5-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        #p5-container canvas {
-            display: block;
-        }
-
-        .content {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            height: 100vh;
-            padding: 60px 80px;
-            width: 100%;
-            pointer-events: none;
-        }
-
-        .content > * {
-            pointer-events: auto;
-        }
-
-        .header {
-            flex: 1;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-        }
-
-        .title {
-            font-size: 72px;
-            font-weight: 200;
-            font-style: italic;
-            line-height: 1.2;
-            max-width: 600px;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            justify-content: flex-end;
-            padding-bottom: 40px;
-            margin-top: auto;
-            width: 100%;
-        }
-
-        .nav-btn {
-            width: 140px;
-            height: 50px;
-            border: none;
-            border-radius: 121px;
-            background: #A9FF1F;
-            cursor: pointer;
-            font-family: "franklin-gothic-atf", sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            color: #000000;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 19.9px 15px #456710 inset;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-btn:hover {
-            background: #B8FF4D;
-            transform: scale(1.05);
-        }
-
-        .nav-btn:active {
-            transform: scale(0.98);
-        }
-
-        .nav-btn.circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            padding: 0;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 40px 30px;
-            }
-
-            .title {
-                font-size: 48px;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 15px;
-            }
-
-            .nav-btn {
-                width: 120px;
-                height: 45px;
-            }
-
-            .nav-btn.circle {
-                width: 45px;
-                height: 45px;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="index-page">
     <div id="p5-container"></div>
 
     <div class="content">
         <div class="header">
-            <h1 class="title">the streaming economy</h1>
+            <h1 class="title">The Streaming Economy</h1>
         </div>
 
         <div class="nav-buttons">
             <button class="nav-btn" onclick="navigateTo('streaming-ui.html')">Explore</button>
-            <button class="nav-btn circle" onclick="navigateTo('quote.html')" title="Quote">→</button>
-            <button class="nav-btn circle" onclick="navigateTo('index.html')" title="Home">◆</button>
+            <button class="nav-btn" onclick="navigateTo('record-stores.html')">Record Stores</button>
+            <button class="nav-btn circle" onclick="navigateTo('quote.html')" title="Quote">x</button>
+            <button class="nav-btn circle" onclick="navigateTo('index.html')" title="Home">x</button>
         </div>
     </div>
 

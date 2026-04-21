@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Store Finder</title>
+
+    <!-- Import fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARuWikezQUpelFQ6rdxbGelbRpHS0ntF0&libraries=places"></script>
+
+    <!-- Import stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="record-stores-container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="search-content">
+                <h1 class="page-title">Record Store Finder</h1>
+                <div class="search-input-group">
+                    <input
+                        type="text"
+                        id="search-input"
+                        class="search-input"
+                        placeholder="Enter a location or neighborhood..."
+                        autocomplete="off"
+                    />
+                    <button id="search-button" class="nav-btn search-btn">Search</button>
+                    <button id="nearby-button" class="nav-btn nearby-btn">Nearby</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div id="map-container"></div>
+
+        <!-- Info Panel -->
+        <div id="info-panel" class="info-panel">
+            <div class="panel-header">
+                <h2 id="results-title">Search Results</h2>
+                <button id="close-panel" class="close-btn">✕</button>
+            </div>
+            <div id="results-list" class="results-list">
+                <p class="empty-message">Search for record stores to get started</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Record Stores Script -->
+    <script src="record-stores-script.js"></script>
+</body>
+</html>

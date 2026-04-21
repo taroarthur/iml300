@@ -6,7 +6,7 @@ const sketchCode = (p) => {
     }
 
     p.draw = function() {
-        p.background(235, 240, 80); // yellow paper tone
+        p.background(245, 252, 0); // yellow paper tone
 
         let cx = p.width * 0.5;
         let cy = p.height * 0.52;
@@ -62,7 +62,7 @@ const sketchCode = (p) => {
                 let localWave = p.sin(d * ringFreq) * 0.5 + 0.5;
                 let dotSize = p.map(localWave, 0, 1, 1, 4);
 
-                p.fill(120, 125, 130, 90);
+                p.fill(193, 197, 191);
                 p.ellipse(x, y, dotSize, dotSize);
             }
         }
