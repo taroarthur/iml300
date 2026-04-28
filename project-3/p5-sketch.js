@@ -25,7 +25,7 @@ const sketchCode = (p) => {
                 let d = p.sqrt(dx * dx + dy * dy);
 
                 // Radial wave + spherical bulge distortion
-                let radialWave = p.sin(d * ringFreq - p.frameCount * 0.01) * waveAmp;
+                let radialWave = p.sin(d * ringFreq - p.frameCount * 0.02) * waveAmp;
                 let lensWarp = d * bulge * d * 0.02;
 
                 // Warp the horizontal stripe field

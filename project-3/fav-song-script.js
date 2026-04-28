@@ -26,6 +26,19 @@ let dbRef = db.ref("text");
 let entriesContainer = document.getElementById("entries-container");
 let textInputEntry = document.getElementById("text-input-entry");
 
+// Popup
+const popupOverlay = document.getElementById("fav-song-popup-overlay");
+const popupClose = document.getElementById("fav-song-popup-close");
+
+function closePopup() {
+  popupOverlay.classList.add("hidden");
+}
+
+popupClose.addEventListener("click", closePopup);
+popupOverlay.addEventListener("click", (e) => {
+  if (e.target === popupOverlay) closePopup();
+});
+
 // Listen for new entries from Firebase
 dbRef.on("child_added", (data) => {
   const value = data.val();
