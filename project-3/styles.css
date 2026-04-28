@@ -2,6 +2,8 @@
   --accent: #F5FC00;
   --light: #C1C5BF;
   --dark: #313131;
+  /* Disc is bounded by both viewport height (fills below the title) and width (4 records in fan fit horizontally) */
+  --disc-size: min(calc(100vh - 320px), calc((100vw - 320px) / 2.2), 520px);
 }
 
 * {
@@ -504,7 +506,7 @@ body.index-page {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    gap: 20px;
     height: 100vh;
     padding: 60px 80px;
     width: 100%;
@@ -516,7 +518,6 @@ body.index-page {
 }
 
 .header {
-    flex: 1;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -544,34 +545,102 @@ body.index-page {
     letter-spacing: 0.5px;
 }
 
-.bottom-links {
+/* Nav overlay — dims the p5 canvas on hover, sits above canvas (z:0) below content (z:10) */
+#nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--light);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 5;
+}
+
+#nav-overlay.visible {
+    opacity: 0.88;
+}
+
+/* Records Nav */
+.records-nav {
+    display: flex;
+    align-items: flex-end;
+}
+
+.record-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-    margin-top: auto;
-    width: 100%;
-}
-
-.bottom-links p {
-    margin: 0;
-    padding: 0;
-    font-family: "Instrument Sans", sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--dark);
-}
-
-.bottom-links a {
-    color: var(--dark);
+    align-items: center;
     text-decoration: none;
-    transition: color 0.2s ease;
+    flex-shrink: 0;
     position: relative;
+    
+    
+    /* Stacked: show ~13% sliver of each record */
+    margin-left: calc(var(--disc-size) * -0.87);
+    transition: margin-left 0.5s cubic-bezier(0.34, 1.15, 0.64, 1),
+                transform 0.5s ease;
 }
 
-.bottom-links a:hover {
-    color: var(--accent);
+.record-item:first-child {
+    margin-left: 0;
+}
+
+.record-item:nth-child(1) { z-index: 4; }
+.record-item:nth-child(2) { z-index: 3; transform: rotate(-3deg); }
+.record-item:nth-child(3) { z-index: 2; transform: rotate(-5deg); }
+.record-item:nth-child(4) { z-index: 1; transform: rotate(-7deg); }
+
+/* Fan open — 40% of each disc visible, matches screenshot composition */
+.records-nav.open .record-item {
+    margin-left: calc(var(--disc-size) * -0.6);
+    transform: rotate(0deg);
+}
+
+.records-nav.open .record-item:first-child {
+    margin-left: 0;
+}
+
+/* Staggered open */
+.records-nav.open .record-item:nth-child(1) { transition-delay: 0ms; }
+.records-nav.open .record-item:nth-child(2) { transition-delay: 60ms; }
+.records-nav.open .record-item:nth-child(3) { transition-delay: 120ms; }
+.records-nav.open .record-item:nth-child(4) { transition-delay: 180ms; }
+
+/* Record disc */
+.record-disc {
+    width: var(--disc-size);
+    height: var(--disc-size);
+    border-radius: 50%;
+    overflow: hidden;
+    animation: record-spin 2.5s linear infinite;
+    animation-play-state: paused;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.record-disc img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Dim all records when any one is hovered */
+.records-nav.open:has(.record-item:hover) .record-disc {
+    filter: brightness(0.35) opacity(0.95);
+    transition: filter 0.25s ease, box-shadow 0.3s ease;
+}
+
+/* Restore and spin the hovered record */
+.records-nav.open .record-item:hover .record-disc {
+    filter: brightness(1);
+    animation-play-state: running;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+@keyframes record-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }
 
 @media (max-width: 768px) {
@@ -579,19 +648,15 @@ body.index-page {
         padding: 40px 30px;
     }
 
+    :root {
+        --disc-size: min(calc(100vh - 260px), calc((100vw - 180px) / 2.2), 300px);
+    }
+
     .title {
         font-size: 48px;
     }
 
     .subtitle {
-        font-size: 16px;
-    }
-
-    .bottom-links {
-        gap: 8px;
-    }
-
-    .bottom-links p {
         font-size: 16px;
     }
 }
@@ -858,6 +923,7 @@ body.index-page {
   font-size: 14px;
   font-weight: 400;
   margin: 0 0 6px 0;
+  
 }
 
 .info-window-address {

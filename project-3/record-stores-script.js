@@ -1,6 +1,6 @@
 // Record Store Map Application — Mapbox Implementation
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoidGFyb2FydGh1ciIsImEiOiJjbW9qMmpnNnUwMnphMnBwcTEzanl1MzAwIn0.TQ92kreL_REO0AvMDFmrpA';
+const MAPBOX_TOKEN = 'pk.eyJ1IjoidGFyb2FydGh1ciIsImEiOiJjbW9pdDN3YWowMHg0MnlxNDBueXM5cjNwIn0._zK1jVYamrXwCTArxYnb4Q';
 const MAPBOX_STYLE = 'mapbox://styles/taroarthur/cmoitisuz009s01r44liheu9b';
 
 let map;

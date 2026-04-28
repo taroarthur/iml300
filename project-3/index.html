@@ -13,6 +13,7 @@
 </head>
 <body class="index-page">
     <div id="p5-container"></div>
+    <div id="nav-overlay"></div>
 
     <div class="content">
         <div class="header">
@@ -22,14 +23,66 @@
             </div>
         </div>
 
-        <div class="bottom-links">
-            <p><a href="quote.html">theory + thoughts</a></p>
-            <p><a href="facts.html">the facts</a></p>
-            <p><a href="record-stores.html">buy some records</a></p>
-            <p><a href="fav-song.html">share music</a></p>
-        </div>
+        <nav class="records-nav" id="records-nav">
+            <a href="quote.html" class="record-item">
+                <div class="record-disc">
+                    <img src="assets/quotes-record.png" alt="theory + thoughts">
+                </div>
+            </a>
+            <a href="facts.html" class="record-item">
+                <div class="record-disc">
+                    <img src="assets/facts-record.png" alt="the facts">
+                </div>
+            </a>
+            <a href="record-stores.html" class="record-item">
+                <div class="record-disc">
+                    <img src="assets/record-store-record.png" alt="buy some records">
+                </div>
+            </a>
+            <a href="fav-song.html" class="record-item">
+                <div class="record-disc">
+                    <img src="assets/fav-song-record.png" alt="share music">
+                </div>
+            </a>
+        </nav>
     </div>
 
     <script src="p5-sketch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const $nav = $('#records-nav');
+
+            const $overlay = $('#nav-overlay');
+
+            $nav.on('mouseenter', function () {
+                $(this).addClass('open');
+                $overlay.addClass('visible');
+            }).on('mouseleave', function () {
+                $(this).removeClass('open');
+                $overlay.removeClass('visible');
+                $('.record-item').css('z-index', '');
+            });
+
+            // Bring hovered record to front when open
+            $('.record-item').on('mouseenter', function () {
+                if ($nav.hasClass('open')) {
+                    $(this).css('z-index', 10);
+                }
+            }).on('mouseleave', function () {
+                $(this).css('z-index', '');
+            });
+
+            // Intro hint: fan out briefly on load to signal interactivity
+            setTimeout(function () {
+                $nav.addClass('open');
+                $overlay.addClass('visible');
+                setTimeout(function () {
+                    $nav.removeClass('open');
+                    $overlay.removeClass('visible');
+                }, 1400);
+            }, 700);
+        });
+    </script>
 </body>
 </html>
