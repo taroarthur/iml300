@@ -61,34 +61,27 @@ function createFloatingEntry(text) {
   floatingDiv.className = "floating-entry";
   floatingDiv.textContent = text;
 
-  // Random starting position
-  const startX = Math.random() * 100; // 0 to 100%
-  const startY = Math.random() * 100; // 0 to 100%
+  // Vary speed slightly per entry so multiple entries drift independently
+  const duration = (10 + Math.random() * 8).toFixed(1) + "s";
+  floatingDiv.style.setProperty("--float-duration", duration);
 
-  // Random ending position
-  const endX = Math.random() * 100; // 0 to 100%
-  const endY = Math.random() * 100; // 0 to 100%
-
-  floatingDiv.style.setProperty("--start-x", startX + "%");
-  floatingDiv.style.setProperty("--start-y", startY + "%");
-  floatingDiv.style.setProperty("--end-x", endX + "%");
-  floatingDiv.style.setProperty("--end-y", endY + "%");
+  // Place at a random starting position
+  floatingDiv.style.left = (Math.random() * 85) + "%";
+  floatingDiv.style.top  = (Math.random() * 85) + "%";
 
   entriesContainer.appendChild(floatingDiv);
 
-  // Apply jQuery animation for floating effect
-  $(floatingDiv).animate(
-    {
-      left: endX + "%",
-      top: endY + "%",
-      opacity: 0
-    },
-    {
-      duration: 20000,
-      easing: "easeInOutQuad",
-      complete: function() {
-        floatingDiv.remove();
-      }
-    }
-  );
+  function drift() {
+    floatingDiv.style.left = (Math.random() * 85) + "%";
+    floatingDiv.style.top  = (Math.random() * 85) + "%";
+  }
+
+  // Double rAF ensures the browser paints the initial position before
+  // the first transition starts, so the element doesn't jump
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    drift();
+    floatingDiv.addEventListener("transitionend", (e) => {
+      if (e.propertyName === "left") drift();
+    });
+  }));
 }

@@ -1103,11 +1103,10 @@ body.fav-song-page .container {
   position: fixed;
   color: var(--accent);
   font-size: 2rem;
-  font-weight: bold;
   white-space: nowrap;
   pointer-events: none;
-  left: var(--start-x, 50%);
-  top: var(--start-y, 50%);
+  transition: left var(--float-duration, 12s) ease-in-out,
+              top  var(--float-duration, 12s) ease-in-out;
 }
 
 /* ==================== FACTS PAGE ==================== */
