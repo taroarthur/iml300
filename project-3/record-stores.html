@@ -10,15 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARuWikezQUpelFQ6rdxbGelbRpHS0ntF0&libraries=places"></script>
+    <!-- Mapbox GL JS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
 
     <!-- Import stylesheets -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="record-stores-container">
-        <!-- Search Bar -->
+        <!-- SEARCH BAR -->
         <div class="search-bar">
             <div class="search-content">
                 <h1 class="page-title">Record Store Finder</h1>
@@ -36,10 +38,10 @@
             </div>
         </div>
 
-        <!-- Map Container -->
+        <!-- MAP CONTAINER -->
         <div id="map-container"></div>
 
-        <!-- Info Panel -->
+        <!-- INFO -->
         <div id="info-panel" class="info-panel">
             <div class="panel-header">
                 <h2 id="results-title">Search Results</h2>
@@ -51,9 +53,10 @@
         </div>
     </div>
 
-    <!-- jQuery -->
+    <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- Record Stores Script -->
+   
+    <!-- RECORD STORES JS SCRIPT -->
     <script src="record-stores-script.js"></script>
 </body>
 </html>
