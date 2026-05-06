@@ -20,6 +20,17 @@
 
 <body>
     <a href="index.html" class="home-btn">← home</a>
+    <button class="about-btn" id="about-btn">about</button>
+
+    <div id="about-overlay" class="about-overlay">
+      <div class="about-popup">
+        <div class="about-popup-text">
+          <p class="about-popup-title">The Streaming Economy</p>
+          <p class="about-popup-credit">created by Taro Arthur</p>
+        </div>
+        <button class="about-popup-close">close</button>
+      </div>
+    </div>
     <div class="record-stores-container">
         <!-- SEARCH BAR -->
         <div class="search-bar">
@@ -56,8 +67,18 @@
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-   
+
     <!-- RECORD STORES JS SCRIPT -->
     <script src="record-stores-script.js"></script>
+    <script>
+      (function() {
+        var overlay = document.getElementById('about-overlay');
+        var btn = document.getElementById('about-btn');
+        var closeBtn = overlay.querySelector('.about-popup-close');
+        btn.addEventListener('click', function() { overlay.classList.add('visible'); });
+        closeBtn.addEventListener('click', function() { overlay.classList.remove('visible'); });
+        overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('visible'); });
+      })();
+    </script>
 </body>
 </html>

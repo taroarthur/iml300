@@ -15,6 +15,17 @@
 </head>
 <body class="facts-page">
     <a href="index.html" class="home-btn">← home</a>
+    <button class="about-btn" id="about-btn">about</button>
+
+    <div id="about-overlay" class="about-overlay">
+      <div class="about-popup">
+        <div class="about-popup-text">
+          <p class="about-popup-title">The Streaming Economy</p>
+          <p class="about-popup-credit">created by Taro Arthur</p>
+        </div>
+        <button class="about-popup-close">close</button>
+      </div>
+    </div>
     <div class="facts-container">
         <!-- Top Bar Navigation -->
         <nav class="facts-topbar">
@@ -178,7 +189,7 @@
 
                 <div class="tradeoff-reality">
                     <p class="insight-title">Critical Insight:</p>
-                    <p class="insight-text">Streaming is a high-volume, low-margin economy where visibility is abundant but income is scarce.</p>
+                    <p class="insight-text">Everyone can be an artist now, but only a select few can make a living from it.</p>
                 </div>
             </section>
 
@@ -199,18 +210,18 @@
                     <div class="reality-box">
                         <h3 class="reality-subtitle">Streaming Still Matters Because</h3>
                         <ol class="reality-list">
-                            <li><strong>Discovery Engine</strong> – Playlists & algorithms drive exposure</li>
-                            <li><strong>Funnel to Revenue</strong> – Tours, merch, sync deals</li>
-                            <li><strong>Global Distribution</strong> – Zero marginal cost, instant worldwide reach</li>
+                            <li><strong>Discovery Engine</strong>: Song exposure is determined via algorithmically-curated playlists</li>
+                            <li><strong>Funnel to Revenue</strong>: Integration with merch sites, ticketing platforms, sync placement.</li>
+                            <li><strong>Global Distribution</strong>: Cheap to distribute + reaches a global audience</li>
                         </ol>
                     </div>
 
                     <div class="reality-box">
                         <h3 class="reality-subtitle">Structural Problems</h3>
                         <ul class="reality-list">
-                            <li><strong>Winner-takes-most</strong> – Top artists capture disproportionate revenue</li>
-                            <li><strong>Fraud/bot streams</strong> – Artificial plays dilute revenue pool</li>
-                            <li><strong>Oversupply</strong> – Thousands of tracks uploaded daily</li>
+                            <li><strong>Winner-takes-most</strong>: Labels have deals with platforms to push their biggest artists</li>
+                            <li><strong>Fraud/bot streams</strong>: AI-generated artists unfairly collect revenue</li>
+                            <li><strong>Oversupply</strong>: ~100K new tracks on Spotify every day</li>
                         </ul>
                     </div>
 
@@ -232,5 +243,15 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Facts Script -->
     <script src="facts-script.js"></script>
+    <script>
+      (function() {
+        var overlay = document.getElementById('about-overlay');
+        var btn = document.getElementById('about-btn');
+        var closeBtn = overlay.querySelector('.about-popup-close');
+        btn.addEventListener('click', function() { overlay.classList.add('visible'); });
+        closeBtn.addEventListener('click', function() { overlay.classList.remove('visible'); });
+        overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('visible'); });
+      })();
+    </script>
 </body>
 </html>

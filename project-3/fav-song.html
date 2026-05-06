@@ -22,6 +22,17 @@
   </head>
   <body class="fav-song-page">
     <a href="index.html" class="home-btn">← home</a>
+    <button class="about-btn" id="about-btn">about</button>
+
+    <div id="about-overlay" class="about-overlay">
+      <div class="about-popup">
+        <div class="about-popup-text">
+          <p class="about-popup-title">The Streaming Economy</p>
+          <p class="about-popup-credit">created by Taro Arthur</p>
+        </div>
+        <button class="about-popup-close">close</button>
+      </div>
+    </div>
     <!-- This input form controls submission of text input -->
     <div class="container">
       <form id="text-input-form" onsubmit="return false">
@@ -37,5 +48,15 @@
         <button id="fav-song-popup-close">let's go!</button>
       </div>
     </div>
+    <script>
+      (function() {
+        var overlay = document.getElementById('about-overlay');
+        var btn = document.getElementById('about-btn');
+        var closeBtn = overlay.querySelector('.about-popup-close');
+        btn.addEventListener('click', function() { overlay.classList.add('visible'); });
+        closeBtn.addEventListener('click', function() { overlay.classList.remove('visible'); });
+        overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('visible'); });
+      })();
+    </script>
   </body>
 </html>

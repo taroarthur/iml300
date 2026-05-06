@@ -47,8 +47,36 @@
         </nav>
     </div>
 
+    <button class="about-btn" id="about-btn">about</button>
+
+    <div id="about-overlay" class="about-overlay">
+      <div class="about-popup">
+        <div class="about-popup-text">
+          <p class="about-popup-title">The Streaming Economy</p>
+          <p class="about-popup-credit">created by Taro Arthur</p>
+        </div>
+        <button class="about-popup-close">close</button>
+      </div>
+    </div>
+
     <script src="p5-sketch.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    
+    <script>
+
+        // about button overlay
+      (function() {
+        var overlay = document.getElementById('about-overlay');
+        var btn = document.getElementById('about-btn');
+        var closeBtn = overlay.querySelector('.about-popup-close');
+        btn.addEventListener('click', function() { overlay.classList.add('visible'); });
+        closeBtn.addEventListener('click', function() { overlay.classList.remove('visible'); });
+        overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('visible'); });
+      })();
+    </script>
+
+
     <script>
         $(document).ready(function () {
             const $nav = $('#records-nav');
@@ -64,7 +92,7 @@
                 $('.record-item').css('z-index', '');
             });
 
-            // Bring hovered record to front when open
+            // record hover - moves to top
             $('.record-item').on('mouseenter', function () {
                 if ($nav.hasClass('open')) {
                     $(this).css('z-index', 10);
@@ -73,7 +101,7 @@
                 $(this).css('z-index', '');
             });
 
-            // Intro hint: fan out briefly on load to signal interactivity
+            // fans out on intro
             setTimeout(function () {
                 $nav.addClass('open');
                 $overlay.addClass('visible');

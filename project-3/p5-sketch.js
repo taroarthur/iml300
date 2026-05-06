@@ -11,13 +11,13 @@ const sketchCode = (p) => {
         let cx = p.width * 0.5;
         let cy = p.height * 0.52;
 
-        // Mouse controls
-        let waveAmp = p.map(p.mouseX, 0, p.width, 10, 70);      // strength of circular distortion
-        let ringFreq = p.map(p.mouseY, 0, p.height, 0.015, 0.06); // spacing of concentric rings
-        let stripeH = p.map(p.mouseY, 0, p.height, 18, 48);     // stripe thickness
-        let bulge = p.map(p.mouseX, 0, p.width, 0.0008, 0.0035);
+        // mouse reactivity
+        let waveAmp = p.map(p.mouseX, 0, p.width, 10, 70);      // distortion
+        let ringFreq = p.map(p.mouseY, 0, p.height, 0.015, 0.06); // spacing
+        let stripeH = p.map(p.mouseY, 0, p.height, 18, 50);     // thicknss
+        let bulge = p.map(p.mouseX, 0, p.width, 0.0008, 0.004);
 
-        // Draw pattern by sampling a warped field
+        
         for (let y = 0; y < p.height; y += 4) {
             for (let x = 0; x < p.width; x += 4) {
                 let dx = x - cx;
@@ -50,7 +50,7 @@ const sketchCode = (p) => {
     }
 
     function drawHalftone(cx, cy, ringFreq, waveAmp) {
-        let spacing = 8;
+        let spacing = 7;
         
         for (let y = 0; y < p.height; y += spacing) {
             for (let x = 0; x < p.width; x += spacing) {
