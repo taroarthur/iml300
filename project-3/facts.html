@@ -16,22 +16,22 @@
 <body class="facts-page">
     <a href="index.html" class="home-btn">← home</a>
     <div class="facts-container">
-        <!-- Sidebar Navigation -->
-        <aside class="facts-sidebar">
+        <!-- Top Bar Navigation -->
+        <nav class="facts-topbar">
             <h1 class="facts-title">The Facts</h1>
-            <nav class="facts-nav">
-                <a href="#illusion" class="facts-nav-link active" data-section="illusion">illusion</a>
-                <a href="#numbers" class="facts-nav-link" data-section="numbers">numbers</a>
-                <a href="#platform-comparison" class="facts-nav-link" data-section="platform-comparison">platform comparison</a>
-                <a href="#tradeoff" class="facts-nav-link" data-section="tradeoff">tradeoff</a>
-                <a href="#reality" class="facts-nav-link" data-section="reality">the reality</a>
-            </nav>
-        </aside>
+            <div class="facts-nav">
+                <a href="#illusion" class="facts-nav-link active">illusion</a>
+                <a href="#numbers" class="facts-nav-link">numbers</a>
+                <a href="#platform-comparison" class="facts-nav-link">platform comparison</a>
+                <a href="#tradeoff" class="facts-nav-link">tradeoff</a>
+                <a href="#reality" class="facts-nav-link">the reality</a>
+            </div>
+        </nav>
 
         <!-- Main Content -->
         <main class="facts-content">
             <!-- Illusion Section -->
-            <section id="illusion" class="facts-section active">
+            <section id="illusion" class="facts-section">
                 <div class="section-split">
                     <div class="section-half">
                         <h2 class="section-title">The Illusion</h2>
@@ -42,6 +42,7 @@
                     </div>
                 </div>
             </section>
+
 
             <!-- Numbers Section -->
             <section id="numbers" class="facts-section">
@@ -107,7 +108,7 @@
                         <h3 class="chart-title">Per-Stream Payout vs Audience Size</h3>
                         <div class="platform-bars">
                             <div class="platform-item">
-                                <div class="platform-bar" style="--payout-width: 40%; --bar-color: var(--dark);">
+                                <div class="platform-bar" style="--payout-width: 40%; --bar-color: #4a4a4a;">
                                     <span class="platform-payout">$0.003–$0.005</span>
                                 </div>
                                 <p class="platform-name">Spotify</p>
@@ -115,24 +116,24 @@
                             </div>
 
                             <div class="platform-item">
-                                <div class="platform-bar" style="--payout-width: 70%; --bar-color: var(--accent);">
-                                    <span class="platform-payout">$0.006–$0.010</span>
+                                <div class="platform-bar" style="--payout-width: 70%; --bar-color: #7a7a7a;">
+                                    <span class="platform-payout" style="color: var(--light);">$0.006–$0.010</span>
                                 </div>
                                 <p class="platform-name">Apple Music</p>
                                 <p class="platform-size">100M+ users</p>
                             </div>
 
                             <div class="platform-item">
-                                <div class="platform-bar" style="--payout-width: 85%; --bar-color: #1db954;">
-                                    <span class="platform-payout">$0.010+</span>
+                                <div class="platform-bar" style="--payout-width: 85%; --bar-color: var(--accent);">
+                                    <span class="platform-payout" style="color: var(--dark);">$0.010+</span>
                                 </div>
                                 <p class="platform-name">TIDAL</p>
                                 <p class="platform-size">Limited users</p>
                             </div>
 
                             <div class="platform-item">
-                                <div class="platform-bar" style="--payout-width: 60%; --bar-color: #FF0000;">
-                                    <span class="platform-payout">$0.004–$0.008</span>
+                                <div class="platform-bar" style="--payout-width: 60%; --bar-color: var(--light);">
+                                    <span class="platform-payout" style="color: var(--dark);">$0.004–$0.008</span>
                                 </div>
                                 <p class="platform-name">Amazon Music</p>
                                 <p class="platform-size">Large user base</p>
