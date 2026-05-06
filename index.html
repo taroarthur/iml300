@@ -9,6 +9,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      h1 {
+        cursor: pointer;
+        user-select: none;
+        margin: 20px 0;
+      }
+      h1::before {
+        content: "▼ ";
+        display: inline-block;
+        margin-right: 12px;
+        font-size: 0.4em;
+        transition: transform 0.3s ease;
+        width: 8px;
+        vertical-align: middle;
+      }
+      h1.collapsed::before {
+        transform: rotate(-90deg);
+      }
+      .project-description {
+        max-width: 60ch;
+        line-height: 1.6;
+        margin-top: 6px;
+        color: inherit;
+        opacity: 0.75;
+        font-size: 0.9em;
+      }
+    </style>
 
 
   </head>
@@ -124,10 +153,75 @@
     </section>
 
     <section class="vibe-coding" id="vibecoding">
-      <h1>Vibe Coding</h1>
-      <a href="https://taroarthur.github.io/iml300_vibecoding_exercises/" class="content-link" target="_blank">[opens externally]</a>
+      <h1 class="section-title">Vibe Coding</h1>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w1/" class="content-link">Week 1: Fibonacci MIDI Generator</a></h2>
+        <p class="project-description">This script uses Python's MIDI API to generate some notes based on the Fiboquadratic number sequence. These values were computed manually using a formula I obtained from a research project. Essentially, the digits 0-9 are mapped to a particular note, (C, D, E, F, G, A, B), and randomly placed on higher/lower octaves. Users can input a particular tempo that they want to have the sequence play before downloading the file - you'll need a DAW to open the file!
+</p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w2/" class="content-link">Week 2: Worst Volume UX Gallery</a></h2>
+        <p class="project-description">Inspired by the User Experience article, I prompted AI to create a gallery of the most terrible volume slider UX it could conjure up. It's interesting to see the very AI user interface and the frustration that can be created by bad UX design & how it can be weaponised to an extent to purposefully aggravate us (sort of going off of the 'Desktopisation of War' idea). 
+
+It's also funny to reference a real-life competition a group of developers on Reddit had several years ago, and how much more creative the designs were when humans made them!</p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w5/" class="content-link">Week 5: Mirrored Webcam & Pixel Sampler</a></h2>
+        <p class="project-description">Based on the Sydette Harry writing, I vibe coded a p5-adapted version of my Identity Expression assignment from IML 295, which explores the ways technology/code works as a method of racial surveillance. It was interesting to see how AI (ChatGPT) adapted something originally made for Touchdesigner into p5 – the UI was surprisingly clean, compared to my previous HTML vibe coding exercises. </p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w6/" class="content-link">Week 6: Computer Music — A Very Small Website</a></h2>
+        <p class="project-description">Having seen Maya Man's website + the history of the internet lecture, I was intrigued by HTML as an aesthetic and the use of websites to document history</p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w7/" class="content-link">Week 7: Image Edit</a></h2>
+        <p class="project-description">Inspired by Chia Amisola's "Engine.lol", I created a website that allows users to apply low-res effects to images and export them as pop-up windows. The goal was to effectively prompt AI to more or less 'mimic' a certain aesthetic from screenshot references, rather than letting it make its own. The design principles/aesthetic mirrors Amisola's article on "Making space for handmade web". </p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w8/" class="content-link">Week 8: Waiting in a Line — Interactive Score</a></h2>
+        <p class="project-description">W8 Vibecoding exercise based on Christine Sun Kim's TED talk & her graphic scores. The scores mirror a sense of ‘deafening silence’, where the p5 sound library generates 20 hz pulses, creating a bodily sensation/disruption although the ears can’t perceive that low frequency.</p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w9/space-waste-explorer/" class="content-link">Week 9: Space Waste Explorer</a></h2>
+        <p class="project-description">I was inspired by Xin Liu's website + artist statement – "Liu’s practice examines the entropic aftermath of technological and scientific aspiration, foregrounding exhaust as a generative state: rocket fragments falling back to Earth; cryogenic vessels suspending organic matter; genomic code rendered as unreadable scripture; plastics dissolving under enzymatic digestion; satellites logging their own obsolescence."
+
+=> I opted for more of a researched/scientific take on this through interactive web design. It's interesting to see how AI understands a parameter like 'research' before building. </p>
+      </article>
+
+      <article class="project-card">
+        <h2 class="project-title"><a href="vibe-code/w13/" class="content-link">Week 13: Image Edit</a></h2>
+        <p class="project-description">I edited my vibe code experiment from w6 and hand-coded new design aesthetics that weren't dictated by AI. My choices aim to humanise the design more by making the text larger and more accessible, adding a brighter and friendlier colour scheme, as well as guide the eye with subtle hover effects. </p>
+      </article>
+
     </section>
 
   </main>
+  
+  <script>
+    $(document).ready(function() {
+      // Make h1 elements clickable to toggle following content
+      $('h1').on('click', function() {
+        $(this).toggleClass('collapsed');
+        
+        // Get the parent section or find the next sibling content
+        var $parent = $(this).parent();
+        var $contentToToggle = $parent.find('> *:not(h1)');
+        
+        if ($contentToToggle.length > 0) {
+          $contentToToggle.slideToggle(300);
+        } else {
+          // If no siblings in parent, toggle siblings of h1
+          $(this).nextAll().slideToggle(300);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

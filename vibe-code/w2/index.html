@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Worst Volume UX Gallery</title>
+  <style>
+    :root { --bg:#0b0d12; --panel:#111625; --muted:#7f8aa6; --ink:#e9eefc; --bad:#ff3b7a; --worse:#7c5cff; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(900px 600px at 20% 20%, #141a2d 0%, var(--bg) 60%);
+      color: var(--ink);
+    }
+    header{
+      padding: 22px 18px 10px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    h1{ margin:0 0 6px; font-size: 20px; letter-spacing:.2px; font-weight:700; }
+    p{ margin:0; color: var(--muted); font-size: 13px; line-height:1.45; max-width: 920px;}
+    .grid{
+      max-width: 1100px; margin: 0 auto; padding: 14px 18px 28px;
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;
+    }
+    .card{
+      position:relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 14px;
+      overflow:hidden;
+      min-height: 200px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.28);
+    }
+    .title{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 10px;
+    }
+    .title b{ font-size: 13px; letter-spacing:.2px; }
+    .tag{
+      font-size: 11px; color: #0b0d12; background: rgba(255,255,255,.9);
+      padding: 3px 8px; border-radius: 999px;
+      mix-blend-mode: screen; opacity:.85;
+    }
+    .hint{ font-size: 12px; color: var(--muted); margin: 6px 0 10px; line-height:1.35;}
+    .row{ display:flex; gap: 10px; align-items:center; }
+    .meter{
+      flex: 1;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      position: relative;
+      overflow:hidden;
+    }
+    .fill{
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(90deg, var(--bad), #ffcf5c, #3bffb5);
+      filter: saturate(1.5);
+      border-radius: 999px;
+      transform-origin: left;
+    }
+    .readout{
+      font-variant-numeric: tabular-nums;
+      font-size: 12px; color: rgba(233,238,252,.9);
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.07);
+      min-width: 72px;
+      text-align:center;
+      user-select:none;
+    }
+    .ctrl{
+      width: 100%;
+      appearance:none;
+      height: 26px;
+      background: transparent;
+      margin: 6px 0 0;
+    }
+    .ctrl::-webkit-slider-runnable-track{
+      height: 6px; background: rgba(255,255,255,.12);
+      border-radius: 999px;
+    }
+    .ctrl::-webkit-slider-thumb{
+      appearance:none;
+      width: 18px; height: 18px; border-radius: 50%;
+      margin-top: -6px;
+      background: radial-gradient(circle at 30% 30%, #fff 0%, #c9d1ff 35%, var(--worse) 100%);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow: 0 8px 24px rgba(124,92,255,.35);
+    }
+
+    /* intentionally bad visuals */
+    .strobe{ animation: strobe 140ms linear infinite; }
+    @keyframes strobe { 0%{filter: hue-rotate(0deg) contrast(1);} 100%{filter: hue-rotate(250deg) contrast(2.2);} }
+
+    .shake{ animation: shake 160ms linear infinite; }
+    @keyframes shake {
+      0%{ transform: translate(0,0) rotate(0deg); }
+      25%{ transform: translate(2px,-1px) rotate(0.8deg); }
+      50%{ transform: translate(-2px,1px) rotate(-0.9deg); }
+      75%{ transform: translate(1px,2px) rotate(0.6deg); }
+      100%{ transform: translate(0,0) rotate(0deg); }
+    }
+
+    .invertText{ mix-blend-mode: difference; }
+    .ghost{
+      position:absolute; inset:0;
+      background: repeating-linear-gradient(135deg, rgba(255,255,255,.08) 0 8px, rgba(0,0,0,0) 8px 16px);
+      opacity: .25;
+      pointer-events:none;
+    }
+
+    canvas{ width:100%; height: 120px; border-radius: 14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.18); }
+
+    .btn{
+      appearance:none; border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      cursor: pointer;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    footer{
+      max-width:1100px; margin: 0 auto; padding: 0 18px 28px;
+      color: var(--muted); font-size: 12px;
+    }
+    code{ background: rgba(255,255,255,.06); padding: 2px 6px; border-radius: 8px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Worst Volume UX Gallery</h1>
+    <p>
+      Eight deliberately terrible volume controls. They break physics, lie to users, and sabotage interaction.
+      Open this file in any browser; it’s a single-share HTML.
+    </p>
+  </header>
+
+  <section class="grid">
+    <!-- 1) Inverted + jitter -->
+    <article class="card" id="c1">
+      <div class="title"><b>1) Inverted + Jitter Thumb</b><span class="tag">hostile mapping</span></div>
+      <div class="hint">Drag right to get quieter. Thumb jitters as if it’s trying to escape.</div>
+      <div class="row">
+        <div class="meter"><div class="fill" id="f1"></div></div>
+        <div class="readout" id="r1">50%</div>
+      </div>
+      <input class="ctrl" id="s1" type="range" min="0" max="100" value="50" />
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 2) Moving target slider -->
+    <article class="card" id="c2">
+      <div class="title"><b>2) The Slider Runs Away</b><span class="tag">moving target</span></div>
+      <div class="hint">When you hover/drag, the whole control slides away. Because why not.</div>
+      <div class="row">
+        <div class="meter"><div class="fill" id="f2"></div></div>
+        <div class="readout" id="r2">50%</div>
+      </div>
+      <div id="runner" style="position:relative;">
+        <input class="ctrl" id="s2" type="range" min="0" max="100" value="50" />
+      </div>
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 3) Nonlinear + random quantisation -->
+    <article class="card" id="c3">
+      <div class="title"><b>3) Nonlinear + Random Steps</b><span class="tag">math crimes</span></div>
+      <div class="hint">Volume snaps to random step sizes, and the scale is exponential-ish.</div>
+      <div class="row">
+        <div class="meter"><div class="fill" id="f3"></div></div>
+        <div class="readout" id="r3">50%</div>
+      </div>
+      <input class="ctrl" id="s3" type="range" min="0" max="100" value="50" />
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 4) Lag + overshoot -->
+    <article class="card" id="c4">
+      <div class="title"><b>4) Massive Lag + Overshoot</b><span class="tag">temporal sabotage</span></div>
+      <div class="hint">Changes apply late, then overshoot past your target like a bad thermostat.</div>
+      <div class="row">
+        <div class="meter"><div class="fill" id="f4"></div></div>
+        <div class="readout" id="r4">50%</div>
+      </div>
+      <input class="ctrl" id="s4" type="range" min="0" max="100" value="50" />
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 5) Vertical but controls horizontal + inverted scroll -->
+    <article class="card" id="c5">
+      <div class="title"><b>5) “Vertical” Bar You Drag Sideways</b><span class="tag">gesture mismatch</span></div>
+      <div class="hint">Looks vertical. Requires horizontal drag. Mouse wheel inverts every second.</div>
+      <div class="row">
+        <div class="readout" id="r5">50%</div>
+        <button class="btn" id="b5">Mute (actually boosts)</button>
+      </div>
+      <div style="position:relative; height: 130px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.18); overflow:hidden;">
+        <div id="v5" style="position:absolute; left: 10px; bottom: 10px; width: 22px; height: 110px; background: rgba(255,255,255,.08); border-radius: 999px;"></div>
+        <div id="vf5" style="position:absolute; left: 10px; bottom: 10px; width: 22px; height: 55px; background: linear-gradient(180deg, #3bffb5, #ff3b7a); border-radius: 999px;"></div>
+        <div id="grab5" style="position:absolute; left: 44px; top: 12px; right: 10px; bottom: 10px; border-radius: 12px; background: rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.10); display:flex; align-items:center; justify-content:center; color:rgba(233,238,252,.55); font-size:12px; user-select:none;">
+          DRAG HERE (SIDEWAYS)
+        </div>
+      </div>
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 6) Lying readout + strobe -->
+    <article class="card strobe" id="c6">
+      <div class="title"><b class="invertText">6) Lying Readout + Strobe</b><span class="tag">gaslighting</span></div>
+      <div class="hint invertText">Display shows a random “confidence interval”. Value is mostly fiction.</div>
+      <div class="row">
+        <div class="meter"><div class="fill" id="f6"></div></div>
+        <div class="readout invertText" id="r6">50%</div>
+      </div>
+      <input class="ctrl" id="s6" type="range" min="0" max="100" value="50" />
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 7) Impossible physics: bouncing ball knob -->
+    <article class="card" id="c7">
+      <div class="title"><b>7) Bouncing Knob Physics</b><span class="tag">impossible physics</span></div>
+      <div class="hint">Drag the ball. It has “momentum”, friction bugs, and occasionally teleports.</div>
+      <canvas id="p7" width="900" height="260" aria-label="physics volume"></canvas>
+      <div class="row" style="margin-top:10px;">
+        <div class="meter"><div class="fill" id="f7"></div></div>
+        <div class="readout" id="r7">50%</div>
+      </div>
+      <div class="ghost"></div>
+    </article>
+
+    <!-- 8) Two knobs that fight each other -->
+    <article class="card" id="c8">
+      <div class="title"><b>8) Dual Knobs That Argue</b><span class="tag">contradictory controls</span></div>
+      <div class="hint">Two sliders control the same value. Touching one makes the other “correct” it.</div>
+      <div class="row">
+        <div class="meter"><div class="fill" id="f8"></div></div>
+        <div class="readout" id="r8">50%</div>
+      </div>
+      <input class="ctrl shake" id="s8a" type="range" min="0" max="100" value="50" />
+      <input class="ctrl" id="s8b" type="range" min="0" max="100" value="50" />
+      <div class="ghost"></div>
+    </article>
+  </section>
+
+  <footer>
+    Share: upload this single file to GitHub Pages / Netlify / any static host. No build step.
+    If you want it even worse, search for <code>WORSE_MODE</code> and flip it to <code>true</code>.
+  </footer>
+
+<script>
+(() => {
+  const WORSE_MODE = false; // set true for extra sabotage
+
+  const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
+  const lerp = (a,b,t)=>a+(b-a)*t;
+
+  function setMeter(fillEl, readEl, v, label = null) {
+    fillEl.style.width = `${clamp(v,0,100)}%`;
+    readEl.textContent = label ?? `${Math.round(v)}%`;
+  }
+
+  // 1) inverted + jitter
+  {
+    const s = document.getElementById('s1');
+    const f = document.getElementById('f1');
+    const r = document.getElementById('r1');
+
+    function render() {
+      // invert mapping + add jitter that grows near the target
+      const raw = Number(s.value);
+      const inverted = 100 - raw;
+      const jitter = (Math.sin(performance.now()/55) * 6) + (Math.random()-0.5)*4;
+      const bad = clamp(inverted + jitter, 0, 100);
+      setMeter(f, r, bad, `${Math.round(bad)}%`);
+      requestAnimationFrame(render);
+    }
+
+    // make thumb visually shake by perturbing value while dragging
+    let dragging = false;
+    s.addEventListener('pointerdown', ()=> dragging = true);
+    window.addEventListener('pointerup', ()=> dragging = false);
+    s.addEventListener('input', ()=>{
+      if (dragging) {
+        const n = Number(s.value) + (Math.random()<0.35 ? (Math.random()<0.5?-8:8) : 0);
+        s.value = String(clamp(n,0,100));
+      }
+    });
+
+    render();
+  }
+
+  // 2) slider runs away
+  {
+    const wrap = document.getElementById('runner');
+    const s = document.getElementById('s2');
+    const f = document.getElementById('f2');
+    const r = document.getElementById('r2');
+
+    let x = 0, vx = 0;
+    function updateMeter() {
+      const v = Number(s.value);
+      setMeter(f, r, v);
+    }
+
+    function flee() {
+      vx += (Math.random()<0.5?-1:1) * (WORSE_MODE ? 12 : 6);
+      vx = clamp(vx, -(WORSE_MODE?30:18), (WORSE_MODE?30:18));
+    }
+
+    s.addEventListener('pointerenter', flee);
+    s.addEventListener('pointerdown', flee);
+    s.addEventListener('input', updateMeter);
+
+    function tick() {
+      // drift back and forth, but accelerate away when interacted
+      vx *= 0.92;
+      x += vx;
+      x = clamp(x, -40, 40);
+      wrap.style.transform = `translateX(${x}px)`;
+      requestAnimationFrame(tick);
+    }
+    updateMeter();
+    tick();
+  }
+
+  // 3) nonlinear + random quantisation
+  {
+    const s = document.getElementById('s3');
+    const f = document.getElementById('f3');
+    const r = document.getElementById('r3');
+
+    function quantise(v) {
+      // random step size per interaction (awful)
+      const step = [1,2,3,5,7,11,13,17][(Math.random()*8)|0];
+      return Math.round(v/step)*step;
+    }
+    function nonLinear(v) {
+      // fake “audio taper” but wrong: over-amplifies midrange
+      const t = v/100;
+      const curved = Math.pow(t, 0.35) * 100; // too loud too early
+      return curved;
+    }
+    function apply() {
+      const raw = Number(s.value);
+      const q = quantise(raw);
+      const out = clamp(nonLinear(q), 0, 100);
+      setMeter(f, r, out, `${Math.round(out)}% (raw ${q})`);
+    }
+    s.addEventListener('input', apply);
+    apply();
+  }
+
+  // 4) lag + overshoot
+  {
+    const s = document.getElementById('s4');
+    const f = document.getElementById('f4');
+    const r = document.getElementById('r4');
+
+    let target = Number(s.value);
+    let actual = target;
+    let velocity = 0;
+
+    s.addEventListener('input', () => { target = Number(s.value); });
+
+    function tick() {
+      // deliberately bad control system
+      const dt = 1/60;
+      const k = WORSE_MODE ? 28 : 18;     // stiffness
+      const d = WORSE_MODE ? 1.4 : 2.0;   // damping (too low => oscillation)
+      const error = target - actual;
+
+      // add random delay by corrupting the target occasionally
+      const delayedTarget = (Math.random() < (WORSE_MODE ? 0.10 : 0.06))
+        ? (100 - target) // sometimes invert (why??)
+        : target;
+
+      velocity += (k * (delayedTarget - actual) - d * velocity) * dt;
+
+      // add “network lag” by applying velocity in bursts
+      if (Math.random() < (WORSE_MODE ? 0.65 : 0.45)) actual += velocity * 2.2;
+      actual = clamp(actual, 0, 100);
+
+      const label = `${Math.round(actual)}% (lagging…)`;
+      setMeter(f, r, actual, label);
+      requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  // 5) vertical-looking bar, sideways drag + wheel invert
+  {
+    const r = document.getElementById('r5');
+    const vf = document.getElementById('vf5');
+    const grab = document.getElementById('grab5');
+    const btn = document.getElementById('b5');
+
+    let v = 50;
+    let wheelFlip = false;
+    setV(v);
+
+    function setV(n) {
+      v = clamp(n, 0, 100);
+      vf.style.height = `${(v/100)*110}px`;
+      r.textContent = `${Math.round(v)}%`;
+      // also rotate the label slightly as punishment
+      r.style.transform = `rotate(${(Math.sin(performance.now()/260)*6).toFixed(2)}deg)`;
+    }
+
+    let dragging = false;
+    let startX = 0;
+    let startV = 0;
+
+    grab.addEventListener('pointerdown', (e)=>{
+      dragging = true;
+      startX = e.clientX;
+      startV = v;
+      grab.setPointerCapture(e.pointerId);
+    });
+    grab.addEventListener('pointermove', (e)=>{
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      // sideways drag changes vertical value, and direction swaps every 300ms
+      const flip = ((performance.now()/300)|0) % 2 ? -1 : 1;
+      setV(startV + dx * 0.25 * flip);
+    });
+    grab.addEventListener('pointerup', ()=>{
+      dragging = false;
+      // random “auto-correct”
+      if (Math.random() < 0.35) setV(v + (Math.random()<0.5?-18:18));
+    });
+
+    grab.addEventListener('wheel', (e)=>{
+      e.preventDefault();
+      // invert every second
+      const nowFlip = ((performance.now()/1000)|0) % 2 === 0;
+      const dir = nowFlip ? -1 : 1;
+      setV(v + dir * (e.deltaY > 0 ? -6 : 6));
+    }, {passive:false});
+
+    btn.addEventListener('click', ()=>{
+      // “mute” actually boosts and jitters
+      setV(v + 25 + (Math.random()*12));
+      btn.textContent = "Muted ✔ (not really)";
+      setTimeout(()=> btn.textContent = "Mute (actually boosts)", 900);
+    });
+  }
+
+  // 6) lying readout + strobe
+  {
+    const s = document.getElementById('s6');
+    const f = document.getElementById('f6');
+    const r = document.getElementById('r6');
+
+    function apply() {
+      const raw = Number(s.value);
+
+      // show one thing, do another
+      const actual = clamp(raw + (Math.sin(performance.now()/220)*20) + (Math.random()-0.5)*10, 0, 100);
+
+      // fake “confidence interval”
+      const lo = clamp(actual - (10 + Math.random()*18), 0, 100);
+      const hi = clamp(actual + (10 + Math.random()*18), 0, 100);
+
+      setMeter(f, r, actual, `${Math.round(raw)}% ± ${Math.round((hi-lo)/2)}%`);
+    }
+    s.addEventListener('input', apply);
+    setInterval(apply, 120);
+    apply();
+  }
+
+  // 7) impossible physics knob on canvas
+  {
+    const canvas = document.getElementById('p7');
+    const ctx = canvas.getContext('2d');
+    const f = document.getElementById('f7');
+    const r = document.getElementById('r7');
+
+    // device pixel ratio scaling for crispness
+    const dpr = Math.max(1, Math.floor(window.devicePixelRatio || 1));
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const state = {
+      x: 0.5, y: 0.5, vx: 0.0, vy: 0.0,
+      dragging: false,
+      t: 0
+    };
+
+    function valueFromX(xNorm) {
+      // wrong mapping: middle is “max”, edges are quiet
+      const t = clamp(xNorm, 0, 1);
+      const peak = 1 - Math.abs(t - 0.5) * 2; // 0 at edges, 1 at centre
+      return clamp(peak * 100, 0, 100);
+    }
+
+    function draw() {
+      state.t += 1;
+
+      // physics step (intentionally broken)
+      const friction = WORSE_MODE ? 0.996 : 0.992;
+      state.vx *= friction;
+      state.vy *= friction;
+
+      // gravity that changes direction
+      const g = Math.sin(performance.now()/800) * (WORSE_MODE ? 0.0022 : 0.0014);
+      state.vy += g;
+
+      // random impulses
+      if (Math.random() < (WORSE_MODE ? 0.06 : 0.035)) {
+        state.vx += (Math.random()-0.5) * 0.06;
+        state.vy += (Math.random()-0.5) * 0.06;
+      }
+
+      if (!state.dragging) {
+        state.x += state.vx;
+        state.y += state.vy;
+      }
+
+      // bounce off edges but with energy gain (illegal)
+      const bounce = WORSE_MODE ? 1.10 : 1.06;
+      if (state.x < 0.06) { state.x = 0.06; state.vx = Math.abs(state.vx) * bounce; }
+      if (state.x > 0.94) { state.x = 0.94; state.vx = -Math.abs(state.vx) * bounce; }
+      if (state.y < 0.18) { state.y = 0.18; state.vy = Math.abs(state.vy) * bounce; }
+      if (state.y > 0.82) { state.y = 0.82; state.vy = -Math.abs(state.vy) * bounce; }
+
+      // occasional teleport
+      if (Math.random() < (WORSE_MODE ? 0.02 : 0.009)) {
+        state.x = Math.random()*0.88 + 0.06;
+        state.y = Math.random()*0.64 + 0.18;
+      }
+
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0,0,w,h);
+
+      // “track”
+      ctx.globalAlpha = 0.9;
+      ctx.fillStyle = "rgba(255,255,255,0.10)";
+      roundRect(ctx, w*0.06, h*0.48, w*0.88, h*0.08, h*0.04);
+      ctx.fill();
+
+      // ghost ticks (misleading)
+      ctx.globalAlpha = 0.35;
+      for (let i=0;i<11;i++){
+        const x = lerp(w*0.08, w*0.92, i/10);
+        ctx.fillStyle = (i%2===0) ? "rgba(255,59,122,0.35)" : "rgba(124,92,255,0.35)";
+        ctx.fillRect(x, h*0.44, 2*dpr, h*0.16);
+      }
+
+      // ball
+      const bx = w * state.x;
+      const by = h * state.y;
+
+      // shadow (wrong direction)
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath();
+      ctx.ellipse(bx - 18*dpr, by - 10*dpr, 22*dpr, 12*dpr, 0, 0, Math.PI*2);
+      ctx.fillStyle = "rgba(0,0,0,0.55)";
+      ctx.fill();
+
+      ctx.globalAlpha = 1;
+      ctx.beginPath();
+      ctx.arc(bx, by, 16*dpr, 0, Math.PI*2);
+      ctx.fillStyle = "rgba(233,238,252,0.95)";
+      ctx.fill();
+
+      // “glint”
+      ctx.globalAlpha = 0.55;
+      ctx.beginPath();
+      ctx.arc(bx-6*dpr, by-6*dpr, 6*dpr, 0, Math.PI*2);
+      ctx.fillStyle = "rgba(255,255,255,0.9)";
+      ctx.fill();
+
+      // compute and display volume (based on x only, ignoring y)
+      const vol = valueFromX(state.x);
+      setMeter(f, r, vol, `${Math.round(vol)}%`);
+
+      requestAnimationFrame(draw);
+    }
+
+    function toNorm(e) {
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      return { x: clamp(x, 0, 1), y: clamp(y, 0, 1) };
+    }
+
+    canvas.addEventListener('pointerdown', (e)=>{
+      const n = toNorm(e);
+      // only sometimes allow grabbing (awful affordance)
+      if (Math.random() < 0.35) return;
+      state.dragging = true;
+      canvas.setPointerCapture(e.pointerId);
+      state.x = n.x; state.y = n.y;
+      // add “momentum” opposite to drag
+      state.vx = (Math.random()-0.5)*0.12;
+      state.vy = (Math.random()-0.5)*0.12;
+    });
+
+    canvas.addEventListener('pointermove', (e)=>{
+      if (!state.dragging) return;
+      const n = toNorm(e);
+      // invert movement every 400ms
+      const flip = ((performance.now()/400)|0)%2 ? -1 : 1;
+      state.x = clamp(state.x + (n.x - state.x)*0.85*flip, 0.06, 0.94);
+      state.y = clamp(state.y + (n.y - state.y)*0.85*flip, 0.18, 0.82);
+    });
+
+    canvas.addEventListener('pointerup', ()=>{
+      state.dragging = false;
+      // surprise snap-to-centre
+      if (Math.random() < 0.25) { state.x = 0.5; state.y = 0.5; }
+    });
+
+    draw();
+
+    function roundRect(ctx, x, y, w, h, r) {
+      const rr = Math.min(r, w/2, h/2);
+      ctx.beginPath();
+      ctx.moveTo(x+rr, y);
+      ctx.arcTo(x+w, y, x+w, y+h, rr);
+      ctx.arcTo(x+w, y+h, x, y+h, rr);
+      ctx.arcTo(x, y+h, x, y, rr);
+      ctx.arcTo(x, y, x+w, y, rr);
+      ctx.closePath();
+    }
+  }
+
+  // 8) two knobs that fight
+  {
+    const a = document.getElementById('s8a');
+    const b = document.getElementById('s8b');
+    const f = document.getElementById('f8');
+    const r = document.getElementById('r8');
+
+    let v = 50;
+    function render() { setMeter(f, r, v); }
+
+    function fight(source) {
+      // the other slider “corrects” you with bias + drift
+      const bias = (source === 'a') ? -8 : +8;
+      const drift = Math.sin(performance.now()/240) * (WORSE_MODE ? 18 : 10);
+      v = clamp(v + bias + drift, 0, 100);
+      a.value = String(clamp(v + (Math.random()-0.5)*6, 0, 100));
+      b.value = String(clamp(v + (Math.random()-0.5)*6, 0, 100));
+      render();
+    }
+
+    a.addEventListener('input', ()=>{ v = Number(a.value); fight('a'); });
+    b.addEventListener('input', ()=>{ v = Number(b.value); fight('b'); });
+
+    // periodic disagreement
+    setInterval(()=> {
+      if (Math.random() < (WORSE_MODE ? 0.55 : 0.35)) fight(Math.random()<0.5?'a':'b');
+    }, 420);
+
+    render();
+  }
+})();
+</script>
+</body>
+</html>

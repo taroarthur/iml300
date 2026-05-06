@@ -493,6 +493,33 @@ body.quote-page {
 }
 
 
+/* Home button — shared across all inner pages */
+.home-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 20px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark);
+  background: var(--light);
+  border: 2px solid var(--dark);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.home-btn:hover {
+  background: var(--dark);
+  color: var(--accent);
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -1347,7 +1374,7 @@ body.fav-song-page .container {
 .earnings-calculator {
   background: var(--light);
   border: 2px solid var(--dark);
-  border-radius: 8px;
+  border-radius: 1px;
   padding: 24px;
 }
 
@@ -1420,7 +1447,7 @@ body.fav-song-page .container {
 }
 
 .earnings-result {
-  border-top: 1px solid rgba(49, 49, 49, 0.2);
+  border-top: 1px solid var(--dark);
   padding-top: 16px;
   margin-top: 16px;
 }
